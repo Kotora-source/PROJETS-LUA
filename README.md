@@ -6,4 +6,7 @@
 
 # Projets démarrés a base de tutoriels trouvés sur le net
 
+# Framework utilisé : LÖVE2D
+# IDE utilisé : ZeroBrane Studio
+
 # Louise Maire
