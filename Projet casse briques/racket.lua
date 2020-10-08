@@ -1,4 +1,6 @@
---Fichier definissant la raquette du casse briques : est une classe OBJET
+﻿--Fichier definissant la raquette du casse briques : est une classe OBJET
+--reussi grace a mes gars surs de tutorialspoint
+--https://www.tutorialspoint.com/lua/lua_object_oriented.htm
 
 --definition des attributs d'une racket
 Racket = {
@@ -63,6 +65,6 @@ end
 
 --affiche la racket dans LÖVE2D
 function Racket:Affichage()
-  love.graphics.setColor(255, 255, 255) -- Couleur blanche
+  love.graphics.setColor(255, 255, 255) -- Couleur blanche, a modifer plus tard
   love.graphics.rectangle('fill', self.x, self.y, self.width, self.height) -- Rectangle
 end
