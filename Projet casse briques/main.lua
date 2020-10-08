@@ -4,7 +4,7 @@
 
 --appel des fichiers 
 require ('constants')
-require ('racket')
+require ('Racket')
 require ('bricks')
 require ('lives')
 require ('ball')
@@ -17,10 +17,10 @@ function love.load()
   
   math.randomseed(love.timer.getTime()) -- Initialisation de la graine avec un temps en ms
   
-  initializeRacket()
+  r = Racket:new(nil)
   initializeBricks()
   initializeLives()
-  initializeBall(racket.height, racket.y)
+  initializeBall(r.height, r.y)
 
 --fin de love.load
 end
@@ -29,13 +29,7 @@ function love.update(dt)
   -- Fonction pour mettre à jour (appelée à chaque frame)
   
   --mouvements de la raquette (a revoir en creeant des fichiers objets)
-  -- Mouvement vers la gauche
-  if love.keyboard.isDown('left', 'q') and racket.x > 0 then
-      racket.x = racket.x - (racket.speedX*dt)
-  -- Mouvement vers la droite
-  elseif love.keyboard.isDown('right', 'd') and racket.x + racket.width < WIN_WIDTH then
-      racket.x = racket.x + (racket.speedX*dt)
-  end
+  r:Movment(dt)
   
   --mouvements de la balle
   ball.x = ball.x + ball.speedX * dt -- Mise à jour position en abscisse de la balle
@@ -48,8 +42,7 @@ function love.draw()
   -- Fonction pour dessiner (appelée à chaque frame)
   
   --dessine la raquette
-  love.graphics.setColor(255, 255, 255) -- Couleur blanche
-  love.graphics.rectangle('fill', racket.x, racket.y, racket.width, racket.height) -- Rectangle
+  r:Affichage()
   
   --dessine les briques
   for line=1, #bricks do -- Ligne

@@ -1,54 +1,57 @@
---Fichier definissant la raquette du casse briques
+--Fichier definissant la raquette du casse briques : est une classe OBJET
 
---[[
---TENTATIVE DE CREATION D'UN FICHIER OBJET
-racket = {} -- Initialisation variable pour la raquette (tableau)
+--definition des attributs d'une racket
+Racket = {
+    speedX = 0,
+    width = 0,
+    height = 0,
+    x = 0,
+    y = 0
+  }
 
-local __instance = {__index=racket}
 
-function racket.new()
-  local instance = {}
-  setmetatable(instance, __instance)
-  return instance
+--Constructeur
+function Racket:new(o) --mettre nil pdt la creation de l'objet
+    o = o  or {}
+    setmetatable(o, self)
+    self.__index = self
+  --Initialisation des attributs de Racket
+    self.speedX = 215 -- Vitesse horizontale
+    self.width = WIN_WIDTH / 4 -- Largeur
+    self.height = WIN_HEIGHT / 37 -- Hauteur
+    self.x = (WIN_WIDTH-self.width) / 2 -- Position en abscisse
+    self.y = WIN_HEIGHT - 64 -- Position en ordonnée
+    return o
 end
-
---Initialisation des attributs de Racket
-racket.speedX = 215 -- Vitesse horizontale
-racket.width = WIN_WIDTH / 4 -- Largeur
-racket.height = WIN_HEIGHT / 37 -- Hauteur
-racket.x = (WIN_WIDTH-racket.width) / 2 -- Position en abscisse
-racket.y = WIN_HEIGHT - 64 -- Position en ordonnée
-
---Fonctions ? tester si fonctionne
+    
+--Methodes
 --retourne la position X
-racket:getX()
+function Racket:returnX()
   return self.x
 end
 
 --retourne la position Y
-racket:getY()
+function Racket:returnY()
   return self.y
 end
 
 --retourne la vitesse
-racket:getSpeedX()
+function Racket:getSpeedX()
   return self.speedX
 end
 
 --retourne la largeur
-racket:getWidth()
+function Racket:getWidth()
   return self.width
 end
 
 --retourne la hauteur
-racket:getHeight()
+function Racket:getHeight()
   return self.height
 end
 
---a voir pour love.load ? comment faire ?
-
---a mettre dans love.update
-racket:Movment(dt)
+--fais bouger la racket vers la gauche ou la droite
+function Racket:Movment(dt)
    -- Mouvement vers la gauche
   if love.keyboard.isDown('left', 'q') and self.x > 0 then
       self.x = self.x - (self.speedX*dt)
@@ -58,25 +61,8 @@ racket:Movment(dt)
   end
 end
 
---a mettre dans love.draw
-racket:Affichage()
+--affiche la racket dans LÖVE2D
+function Racket:Affichage()
   love.graphics.setColor(255, 255, 255) -- Couleur blanche
   love.graphics.rectangle('fill', self.x, self.y, self.width, self.height) -- Rectangle
-end
-
---]]
-
-
---début du code pris sur le site (A REVOIR pour adapter au fonctionnement objet)
-function initializeRacket()
-  
-  racket = {} --initalisation de la raquette
-  
-  -- Initialisation de paires (clef, valeur) de la table racket
-  racket.speedX = 215 -- Vitesse horizontale
-  racket.width = WIN_WIDTH / 4 -- Largeur
-  racket.height = WIN_HEIGHT / 37 -- Hauteur
-  racket.x = (WIN_WIDTH-racket.width) / 2 -- Position en abscisse
-  racket.y = WIN_HEIGHT - 64 -- Position en ordonnée
-
 end
