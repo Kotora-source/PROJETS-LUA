@@ -14,16 +14,16 @@ Racket = {
 
 --Constructeur
 function Racket:new(o) --mettre nil pdt la creation de l'objet
-    o = o  or {}
-    setmetatable(o, self)
-    self.__index = self
+  o = o  or {}
+  setmetatable(o, self)
+  self.__index = self
   --Initialisation des attributs de Racket
-    self.speedX = 215 -- Vitesse horizontale
-    self.width = WIN_WIDTH / 4 -- Largeur
-    self.height = WIN_HEIGHT / 37 -- Hauteur
-    self.x = (WIN_WIDTH-self.width) / 2 -- Position en abscisse
-    self.y = WIN_HEIGHT - 64 -- Position en ordonnée
-    return o
+  self.speedX = 215 -- Vitesse horizontale
+  self.width = WIN_WIDTH / 4 -- Largeur
+  self.height = WIN_HEIGHT / 37 -- Hauteur
+  self.x = (WIN_WIDTH-self.width) / 2 -- Position en abscisse
+  self.y = WIN_HEIGHT - 64 -- Position en ordonnée
+  return o
 end
     
 --Methodes

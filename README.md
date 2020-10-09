@@ -8,5 +8,6 @@
 
 # Framework utilisé : LÖVE2D
 # IDE utilisé : ZeroBrane Studio
+# Tuto pour LÖVE2D : https://sheepolution.com/learn/book/0
 
 # Louise Maire

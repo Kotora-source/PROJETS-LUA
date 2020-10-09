@@ -15,6 +15,10 @@ end
 
 
 function love.draw()
+  --affiche un pikachu
+  love.graphics.draw(pikachu)
+  
+  
   --récupère les infos de la taille de l'écran et les affiche.
   local _, _, flags = love.window.getMode()
  
@@ -27,9 +31,7 @@ function love.draw()
   scale = love.window.getDPIScale( )
   love.graphics.print(scale, 4, 30)
   
-  --affiche un pikachu
-  love.graphics.draw(pikachu, 4, 50)
-end
+ end
 
 --ferme la fenêtre et quitte proprement le programme quand la touche echap est pressee.
 function love.keypressed(k)
