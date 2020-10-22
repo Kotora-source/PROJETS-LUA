@@ -4,18 +4,18 @@
 
 --definition des attributs d'une racket
 Racket = {
-    speedX = 0,
-    width = 0,
-    height = 0,
-    x = 0,
-    y = 0
+    speedX = 0, --Vitesse horizontale sur l'axe X de la raquette
+    width = 0, --Largeur de la raquette
+    height = 0, --hauteur de la raquette
+    x = 0, --position X
+    y = 0 --position Y
   }
 
 
 --Constructeur
-function Racket:new(o) --mettre nil pdt la creation de l'objet
+function Racket:new(o) --mettre (nil) pdt la creation de l'objet
   o = o  or {}
-  setmetatable(o, self)
+  setmetatable(o, self) --lie les deux tables
   self.__index = self
   --Initialisation des attributs de Racket
   self.speedX = 215 -- Vitesse horizontale
@@ -63,7 +63,7 @@ function Racket:Movment(dt)
   end
 end
 
---affiche la racket dans LÖVE2D
+--affiche la racket dans la fenetre LÖVE2D
 function Racket:Affichage()
   love.graphics.setColor(255, 255, 255) -- Couleur blanche, a modifer plus tard
   love.graphics.rectangle('fill', self.x, self.y, self.width, self.height) -- Rectangle
