@@ -19,6 +19,8 @@ DEFAULT_SPEED_BX = 130 -- Vitesse horizontale
 DEFAULT_SPEED_BY = 335 -- Vitesse verticale
 
 -- Fonction pour tester la collision entre deux rectangles
+-- ca a rien a foutre la c quoi ce bordel
+-- je commence a me dire que le tuto est pas fou mdr
 function collideRect(rect1, rect2)
   if rect1.x < rect2.x + rect2.width and
      rect1.x + rect1.width > rect2.x and
