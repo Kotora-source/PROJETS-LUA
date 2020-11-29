@@ -71,7 +71,8 @@ end
 
 
 -- TOUT EST A REVOIR ICI
---Je vais creer 5 patterns de briques, donc ces fonctions vont degager
+--Je vais creer 3 a 5 motifs de dispositions de briques, donc ces fonctions vont degager
+--plus je vais faire des imgs de briques (avec animations de brique qui s'abime et qui se brise)
 
 function createBrick(line, column)
 
