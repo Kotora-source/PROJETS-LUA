@@ -16,5 +16,3 @@
 ## Lua orienté objet https://www.tutorialspoint.com/lua/lua_object_oriented.htm
 # Tutos de création de jeux utilisés
 ## Jeu de casse briques https://zestedesavoir.com/tutoriels/1399/un-jeu-de-casse-briques-en-lua-avec-love2d/
-
-# Louise Maire
