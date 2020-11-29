@@ -1,14 +1,14 @@
 # Retranscription exacte du tuto https://zestedesavoir.com/tutoriels/1399/un-jeu-de-casse-briques-en-lua-avec-love2d/
 
-# Distribution
-# Maintenant que nous disposons d’une première version jouable de notre jeu, il peut être sympa d’en faire profiter les 
-# autres et de savoir ce qu’ils en pensent. En effet, quoi de plus normal que de vouloir que l’on joue à notre jeu et 
-# l’améliorer?? Avec Love2D, il existe plusieurs manières de distribuer son jeu.
+Distribution
+Maintenant que nous disposons dâ€™une premiÃ¨re version jouable de notre jeu, il peut Ãªtre sympa dâ€™en faire profiter les 
+autres et de savoir ce quâ€™ils en pensent. En effet, quoi de plus normal que de vouloir que lâ€™on joue Ã  notre jeu et 
+lâ€™amÃ©liorer?? Avec Love2D, il existe plusieurs maniÃ¨res de distribuer son jeu.
 
-# En créant un fichier «?.love?»
-# La plus simple consiste à créer un fichier «?.love?» qui pourra être exécuté sur les machines ayant une version compatible
-# de Love2D d’installée. Pour cela, il faut d’abord se placer dans le répertoire contenant tout notre jeu (code et ressources)
-# et s’assurer que le fichier main.lua se trouve à la racine de celui-ci, sans quoi cela ne fonctionnera pas. Comme c’est 
-# bon dans notre cas, nous pouvons sélectionner tout le contenu puis le compresser en un fichier «?.zip?» (clique droit 
-# puis compresser sous Ubuntu). Une fois cela fait, il ne reste plus qu’à renommer le fichier en remplaçant l’extension par 
-# «?love?». L’icône change et il est alors possible d’exécuter le jeu en double-cliquant sur le fichier.
+En crÃ©ant un fichier Â«.loveÂ»
+La plus simple consiste Ã  crÃ©er un fichier Â«?.love?Â» qui pourra Ãªtre exÃ©cutÃ© sur les machines ayant une version compatible
+de Love2D dâ€™installÃ©e. Pour cela, il faut dâ€™abord se placer dans le rÃ©pertoire contenant tout notre jeu (code et ressources)
+et sâ€™assurer que le fichier main.lua se trouve Ã  la racine de celui-ci, sans quoi cela ne fonctionnera pas. Comme câ€™est 
+bon dans notre cas, nous pouvons sÃ©lectionner tout le contenu puis le compresser en un fichier Â«?.zip?Â» (clique droit 
+puis compresser sous Ubuntu). Une fois cela fait, il ne reste plus quâ€™Ã  renommer le fichier en remplaÃ§ant lâ€™extension par 
+Â«loveÂ». Lâ€™icÃ´ne change et il est alors possible dâ€™exÃ©cuter le jeu en double-cliquant sur le fichier.
