@@ -10,6 +10,7 @@ Brick = {
   damaged = 0 --Endommagement de la brick
 }
 
+-----------------------------------------------------------------------------------------
 --Constructeur
     --mettre (nil) pdt la creation de l'objet
 function Brick:new(o) 
@@ -26,6 +27,7 @@ function Brick:new(o)
   return o
 end
 
+-----------------------------------------------------------------------------------------
 --GETTERS
 function Brick:returnX()
   return self.x
@@ -51,6 +53,7 @@ function Brick:getDamaged()
   return self.damaged
 end
 
+-----------------------------------------------------------------------------------------
 --SETTERS
 function Brick:setDamaged(value)
   self.damaged = value
@@ -79,6 +82,7 @@ function Brick:setBroken()
   self.broken = true
 end
 
+-----------------------------------------------------------------------------------------
 
 -- TOUT EST A REVOIR ICI
 --Je vais creer 3 a 5 motifs de dispositions de briques, donc ces fonctions vont degager

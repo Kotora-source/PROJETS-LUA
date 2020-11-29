@@ -9,7 +9,7 @@ Racket = {
     y = 0 --position Y
   }
 
-
+-----------------------------------------------------------------------------------------
 --Constructeur
     --mettre (nil) pdt la creation de l'objet
 function Racket:new(o) 
@@ -25,6 +25,7 @@ function Racket:new(o)
   return o
 end
     
+-----------------------------------------------------------------------------------------
 --GETTERS
 function Racket:returnX()
   return self.x
@@ -42,13 +43,12 @@ function Racket:getWidth()
   return self.width
 end
 
-
 function Racket:getHeight()
   return self.height
 end
 
+-----------------------------------------------------------------------------------------
 --METHODES
-
 --fais bouger la racket vers la gauche ou la droite, a revoir.
 function Racket:Movment(dt)
    -- Mouvement vers la gauche
