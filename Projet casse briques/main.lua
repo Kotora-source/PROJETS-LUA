@@ -79,7 +79,7 @@ function love.keypressed(key)
     if game_paused == false then
       game_paused = true
     elseif game_paused == true then
-      game_paused == false      
+      game_paused = false      
     end
   end
   
