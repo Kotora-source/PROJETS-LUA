@@ -53,7 +53,7 @@ function Racket:getHeight()
   return self.height
 end
 
---fais bouger la racket vers la gauche ou la droite
+--fais bouger la racket vers la gauche ou la droite, a revoir.
 function Racket:Movment(dt)
    -- Mouvement vers la gauche
   if love.keyboard.isDown('left', 'q') and self.x > 0 then
@@ -64,7 +64,7 @@ function Racket:Movment(dt)
   end
 end
 
---affiche la racket dans la fenetre LÖVE2D
+--affiche la racket dans la fenetre LÖVE2D, a revoir egalement
 function Racket:Affichage()
   love.graphics.setColor(255, 255, 255) -- Couleur blanche, a modifer plus tard
   love.graphics.rectangle('fill', self.x, self.y, self.width, self.height) -- Rectangle
