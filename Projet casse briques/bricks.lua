@@ -10,7 +10,7 @@ Brick = {
   damaged = 0 --Endommagement de la brick
 }
 
---Constructeur de bricks
+--Constructeur
     --mettre (nil) pdt la creation de l'objet
 function Brick:new(o) 
   o = o or {}

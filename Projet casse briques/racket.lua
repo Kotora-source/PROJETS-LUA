@@ -1,7 +1,4 @@
-﻿--Fichier definissant la raquette du casse briques : est une classe OBJET
---Sert de modele pour tous les autres fichiers objet
---reussi grace a mes gars surs de tutorialspoint
---https://www.tutorialspoint.com/lua/lua_object_oriented.htm
+﻿--Classe de la racket -> classe objet
 
 --Definition des attributs d'une racket
 Racket = {
@@ -14,7 +11,8 @@ Racket = {
 
 
 --Constructeur
-function Racket:new(o) --mettre (nil) pdt la creation de l'objet
+    --mettre (nil) pdt la creation de l'objet
+function Racket:new(o) 
   o = o  or {}
   setmetatable(o, self) --lie les deux tables
   self.__index = self
@@ -27,31 +25,29 @@ function Racket:new(o) --mettre (nil) pdt la creation de l'objet
   return o
 end
     
---Methodes
---retourne la position X
+--GETTERS
 function Racket:returnX()
   return self.x
 end
 
---retourne la position Y
 function Racket:returnY()
   return self.y
 end
 
---retourne la vitesse
 function Racket:getSpeedX()
   return self.speedX
 end
 
---retourne la largeur
 function Racket:getWidth()
   return self.width
 end
 
---retourne la hauteur
+
 function Racket:getHeight()
   return self.height
 end
+
+--METHODES
 
 --fais bouger la racket vers la gauche ou la droite, a revoir.
 function Racket:Movment(dt)
