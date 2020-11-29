@@ -1,8 +1,9 @@
 ﻿--Fichier definissant la raquette du casse briques : est une classe OBJET
+--Sert de modele pour tous les autres fichiers objet
 --reussi grace a mes gars surs de tutorialspoint
 --https://www.tutorialspoint.com/lua/lua_object_oriented.htm
 
---definition des attributs d'une racket
+--Definition des attributs d'une racket
 Racket = {
     speedX = 0, --Vitesse horizontale sur l'axe X de la raquette
     width = 0, --Largeur de la raquette

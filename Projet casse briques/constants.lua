@@ -5,7 +5,7 @@ WIN_WIDTH = 850 -- Largeur fenêtre
 WIN_HEIGHT = 600 -- Hauteur fenêtre
 
 
---constantes briques
+--constantes briques A MODIFIER VU LES CREATIONS DE MOTIF 
 BRICKS_PER_LINE = 7 -- Nombre de briques par ligne
 BRICKS_PER_COLUMN = 6 -- Nombre de briques par colonne
 

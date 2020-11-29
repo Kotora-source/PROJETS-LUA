@@ -1,5 +1,15 @@
 --Classe des briques -> classe objet
 
+--Definition des attributs d'une brick
+Brick = {
+  broken = false, --Par defaut, une brick n'est pas brisee
+  width = 0, --Largeur
+  height = 0, --Hauteur
+  x = 0, --Position x
+  y = 0, --Position y
+  damaged = 0 --Endommagement de la brick
+}
+
 --Constructeur de bricks
     --mettre (nil) pdt la creation de l'objet
 function Brick:new(o) 
@@ -8,7 +18,7 @@ function Brick:new(o)
   self.__index = self
   --Initialisation des attributs de Brick
   self.broken = false --par defaut, la brique n'est pas brisee
-  self.width = 0 --a oir vu que j'aimerai mettre des img a la place des briques.
+  self.width = 0 --a voir vu que j'aimerai mettre des img a la place des briques.
   self.height = 0
   self.x = 0
   self.y = 0
