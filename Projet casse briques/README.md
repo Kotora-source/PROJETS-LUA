@@ -3,3 +3,8 @@
 # Premier projet commencé en Lua (07/10/2020)
 
 # Tentative d'amélioration en créant des classes objets + autres fonctionnalités au niveau du jeu + skins personnalisés
+
+Gestionnaire de mise en pause
+https://hump.readthedocs.io/en/latest/gamestate.html
+--> a voir quand j'aurai le lvl.
+-----> a voir si je peux pas le coder moi-mÃªme, carrÃ©ment.

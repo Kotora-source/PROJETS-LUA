@@ -21,18 +21,24 @@ function love.load()
   initializeBricks()
   initializeLives()
   initializeBall(r.height, r.y)
+  
+  game_paused = false --Mise en pause du jeu, a tester
 
 --fin de love.load
 end
 
 function love.update(dt)
   -- Fonction pour mettre à jour (appelée à chaque frame)
+  if game_paused == false then
+    
+    --mouvements de la raquette (a revoir en creeant des fichiers objets)
+    r:Movment(dt)
+    
+    --mouvements de la balle
+    MovmentBall(dt)
+    
+  end
   
-  --mouvements de la raquette (a revoir en creeant des fichiers objets)
-  r:Movment(dt)
-  
-  --mouvements de la balle
-  MovmentBall(dt)
 --fin de love.update
 end
 
@@ -68,6 +74,13 @@ function love.keypressed(key)
       love.graphics.print(scale, 150, 300)
     end
     
+  --Met en pause le jeu, a tester
+  if key == 'p' then
+    if game_paused == false then
+      game_paused = true
+    elseif game_paused == true then
+      game_paused == false      
+    end
   
 --fin de love.keypressed
 end
