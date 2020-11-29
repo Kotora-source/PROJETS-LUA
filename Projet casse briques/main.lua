@@ -68,12 +68,6 @@ function love.keypressed(key)
   if key == 'escape' then 
       love.event.quit()
    end
-   
-  --affiche les fps //Marche pas trop pour le moment, je dois trouver ou le mettre
-  if key == 'f3' then
-      scale = love.window.getDPIScale( )
-      love.graphics.print(scale, 150, 300)
-    end
     
   --Met en pause le jeu
   if key == 'p' then
