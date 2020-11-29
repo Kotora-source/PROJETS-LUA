@@ -94,10 +94,10 @@ function createBrick(line, column)
   brick = Brick:new(nil)
   
   brick.isNotBroken = true -- Brique pas encore cassée
-  brick.width = WIN_WIDTH / BRICKS_PER_LINE - 5 -- Largeur
-  brick.height = WIN_HEIGHT / 35 -- Hauteur
-  brick.x = 2.5 + (column-1) * (5+brick.width) -- Position en abscisse
-  brick.y = line * (WIN_HEIGHT/35+2.5) -- Position en ordonnée
+  brick.width = love.graphics.getPixelWidth() / BRICKS_PER_LINE - 5 -- Largeur
+  brick.height = love.graphics.getPixelHeight() / 35 -- Hauteur
+  brick.x = 2.5 + (column - 1) * (5 + brick.width) -- Position en abscisse
+  brick.y = line * (love.graphics.getPixelHeight() / 35 + 2.5) -- Position en ordonnée
   return brick
   
 end

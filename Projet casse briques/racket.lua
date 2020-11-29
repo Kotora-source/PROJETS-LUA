@@ -18,10 +18,10 @@ function Racket:new(o)
   self.__index = self
   --Initialisation des attributs de Racket
   self.speedX = 215 -- Vitesse horizontale
-  self.width = WIN_WIDTH / 4 -- Largeur
-  self.height = WIN_HEIGHT / 37 -- Hauteur
-  self.x = (WIN_WIDTH-self.width) / 2 -- Position en abscisse
-  self.y = WIN_HEIGHT - 64 -- Position en ordonnée
+  self.width = love.graphics.getWidth() / 4 -- Largeur
+  self.height = love.graphics.getPixelHeight( ) / 37 -- Hauteur
+  self.x = (love.graphics.getPixelWidth() - self.width) / 2 -- Position en abscisse
+  self.y = love.graphics.getPixelHeight( ) - 64 -- Position en ordonnée
   return o
 end
     
@@ -55,7 +55,7 @@ function Racket:Movment(dt)
   if love.keyboard.isDown('left', 'q') and self.x > 0 then
       self.x = self.x - (self.speedX*dt)
   -- Mouvement vers la droite
-  elseif love.keyboard.isDown('right', 'd') and self.x + self.width < WIN_WIDTH then
+  elseif love.keyboard.isDown('right', 'd') and self.x + self.width < love.graphics.getPixelWidth() then
       self.x = self.x + (self.speedX*dt)
   end
 end
@@ -64,4 +64,10 @@ end
 function Racket:Affichage()
   love.graphics.setColor(255, 255, 255) -- Couleur blanche, a modifer plus tard
   love.graphics.rectangle('fill', self.x, self.y, self.width, self.height) -- Rectangle
+end
+
+--deja modifiee mais pas top top hein
+function Racket:resetRacket()
+  self.x = (love.graphics.getPixelWidth() - self.width) / 2 -- Position en abscisse
+  self.y = love.graphics.getPixelHeight() - 64 -- Position en ordonnée
 end

@@ -1,5 +1,5 @@
 --tuto suivi sur le site suivant
---https://zestedesavoir.com/tutoriels/1399/un-jeu-de-casse-briques-en-lua-avec-love2d/
+--https://zestedesavoir.com/tutoriels/1399/un-jeu-de-casse-briques-en-lua-avec-love2d/ VOUS PUEZ LA MERDE LES MECS
 --tentative d'amélioration et de création de fichiers objets A TESTER
 
 --appel des fichiers 
@@ -8,12 +8,15 @@ require ('racket')
 require ('bricks')
 require ('lives')
 require ('ball')
+require('collisions')
 
 -- pour écrire dans la console au fur et à mesure, facilitant ainsi le débogage
 io.stdout:setvbuf('no') 
 
 function love.load()
   -- Fonction pour initialiser le jeu (appelée au début de celui-ci)
+  
+  love.window.setFullscreen(true, "desktop") -- Met en plein ecran
   
   math.randomseed(love.timer.getTime()) -- Initialisation de la graine avec un temps en ms
   
@@ -40,6 +43,12 @@ function love.update(dt)
     
   end
   
+  --on reprends le tuto 3 min pour piger comment ils ont fait les mecs
+  if collideRect(ball, r) then
+    collisionBallWithRacket(r) -- Collision entre la balle et la raquette
+  end
+  --C'EST DE LA MERDE SON TUTO PUTAIN
+
 --fin de love.update
 end
 
@@ -64,6 +73,11 @@ end
 function love.keypressed(key)
   -- Fonction pour gérer l'appui sur les touches (appelée pour chaque touche pressée)  
   
+  --entre dans le jeu apres le menu
+  if key == 'enter' then
+  --mettre les methodes
+  end
+  
   --quitte le jeu quand la touche "esc" est pressee
   if key == 'escape' then 
       love.event.quit()
@@ -77,7 +91,6 @@ function love.keypressed(key)
       game_paused = false      
     end
   end
-  
   
 --fin de love.keypressed
 end
