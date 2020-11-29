@@ -1,15 +1,83 @@
-Brick = {
-  isNotBroken = true,
-  width = 0,
-  height = 0,
-  x = 0,
-  y = 0
-  }
+--Classe des briques -> classe objet
+
+--Constructeur de bricks
+--[[mettre (nil) pdt la creation de l'objet, 
+'strength' est le nbr de fois qu'on peut la toucher avant qu'elle casse--]]
+function Brick:new(o) 
+  o = o or {}
+  setmetatable(o, self) --lie les deux tables
+  self.__index = self
+  --Initialisation des attributs de Brick
+  self.broken = false
+  self.width = 0 --a voir vu que j'aimerai mettre des img a la place des briques.
+  self.height = 0
+  self.x = 0
+  self.y = 0
+  self.damaged = 0
+  return o
+end
+
+--GETTERS
+function Brick:returnX()
+  return self.x
+end
+
+function Brick:returnY()
+  return self.y
+end
+
+function Brick:getBroken()
+  return self.broken
+end
+
+function Brick:getWidth()
+  return self.width
+end
+
+function Brick:getHeight()
+  return self.height
+end
+
+function Brick:getDamaged()
+  return self.damaged
+end
+
+--SETTERS
+function Brick:setDamaged(value)
+  self.damaged = value
+  if self.damaged == 3 then
+    self.broken = true
+  end
+end
+
+function Brick:setWidth(value)
+  self.width = value
+end
+
+function Brick:setHeight(value)
+  self.height = value
+end
+
+function Brick:setX(value)
+  self.x = value
+end
+
+function Brick:setY(value)
+  self.y = value
+end
+
+function Brick:setBroken()
+  self.broken = true
+end
+
+
+-- TOUT EST A REVOIR ICI
 
 function createBrick(line, column)
 
   -- Fonction pour créer une brique et l'initialiser en fonction de sa position dans le mur
-  local brick = {}
+  brick = Brick:new(nil)
+  
   brick.isNotBroken = true -- Brique pas encore cassée
   brick.width = WIN_WIDTH / BRICKS_PER_LINE - 5 -- Largeur
   brick.height = WIN_HEIGHT / 35 -- Hauteur
@@ -32,4 +100,15 @@ function initializeBricks()
       end
     end
 
+end
+
+function drawBricks()
+  for line=1, #bricks do -- Ligne
+      for column=1, #bricks[line] do -- Colonne
+        local brick = bricks[line][column]
+        if brick.isNotBroken then -- Si la brique n'est pas cassée
+          love.graphics.rectangle('fill', brick.x, brick.y, brick.width, brick.height) -- Rectangle
+        end
+      end
+  end
 end

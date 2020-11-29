@@ -4,7 +4,7 @@
 
 --appel des fichiers 
 require ('constants')
-require ('Racket')
+require ('racket')
 require ('bricks')
 require ('lives')
 require ('ball')
@@ -32,22 +32,7 @@ function love.update(dt)
   r:Movment(dt)
   
   --mouvements de la balle
-  ball.x = ball.x + ball.speedX * dt -- Mise à jour position en abscisse de la balle
-  ball.y = ball.y + ball.speedY * dt -- Mise à jour position en ordonnée de la balle
-  
-  --a modifier c'est juste pour s'approprier le fonctionnement (créer une classe 'collisions')
-            if ball.x + ball.width >= WIN_WIDTH then  -- Bordure droite
-            ball.speedX = -ball.speedX
-          elseif ball.x <= 0 then -- Bordure gauche
-            ball.speedX = -ball.speedX
-          end
-
-          if ball.y <= 0 then  -- Bordure haut
-            ball.speedY = -ball.speedY
-          elseif ball.y + ball.height >= WIN_HEIGHT then -- Bordure bas
-            lives.count = lives.count - 1
-            resetBall(racket.y)
-          end
+  MovmentBall(dt)
 --fin de love.update
 end
 
@@ -58,29 +43,31 @@ function love.draw()
   r:Affichage()
   
   --dessine les briques
-  for line=1, #bricks do -- Ligne
-    for column=1, #bricks[line] do -- Colonne
-      local brick = bricks[line][column]
-      if brick.isNotBroken then -- Si la brique n'est pas cassée
-        love.graphics.rectangle('fill', brick.x, brick.y, brick.width, brick.height) -- Rectangle
-      end
-    end
-  end
+  drawBricks()
   
   --affichage des vies
-  for i=0, lives.count-1 do -- Pour chaque vie
-    local posX = 5 + i * 1.20 * lives.width -- Calcul de la position en abscisse
-    love.graphics.draw(lives.img, posX, WIN_HEIGHT-lives.height) -- Affichage de l'image
-  end
+  drawLives()
   
   --affichage de la balle
-  love.graphics.rectangle('fill', ball.x, ball.y, ball.width, ball.height) -- Rectangle
+  drawBall()
 
 --fin de love.draw
 end
 
 function love.keypressed(key)
   -- Fonction pour gérer l'appui sur les touches (appelée pour chaque touche pressée)  
+  
+  --quitte le jeu quand la touche "esc" est pressee
+  if key == 'escape' then 
+      love.event.quit()
+   end
+   
+  --affiche les fps //Marche pas trop pour le moment, je dois trouver ou le mettre
+  if key == 'f3' then
+      scale = love.window.getDPIScale( )
+      love.graphics.print(scale, 150, 300)
+    end
+    
   
 --fin de love.keypressed
 end
