@@ -8,3 +8,4 @@ Gestionnaire de mise en pause
 https://hump.readthedocs.io/en/latest/gamestate.html
 --> a voir quand j'aurai le lvl.
 -----> a voir si je peux pas le coder moi-même, carrément.
+https://www.reddit.com/r/love2d/comments/8oaun9/can_someone_do_a_example_on_how_to_pause_a_game/
