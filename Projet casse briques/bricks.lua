@@ -1,19 +1,18 @@
 --Classe des briques -> classe objet
 
 --Constructeur de bricks
---[[mettre (nil) pdt la creation de l'objet, 
-'strength' est le nbr de fois qu'on peut la toucher avant qu'elle casse--]]
+    --mettre (nil) pdt la creation de l'objet
 function Brick:new(o) 
   o = o or {}
   setmetatable(o, self) --lie les deux tables
   self.__index = self
   --Initialisation des attributs de Brick
-  self.broken = false
-  self.width = 0 --a voir vu que j'aimerai mettre des img a la place des briques.
+  self.broken = false --par defaut, la brique n'est pas brisee
+  self.width = 0 --a oir vu que j'aimerai mettre des img a la place des briques.
   self.height = 0
   self.x = 0
   self.y = 0
-  self.damaged = 0
+  self.damaged = 0 --compteur a 0 par defaut, il augmente selon le nbr de hits
   return o
 end
 
@@ -45,7 +44,7 @@ end
 --SETTERS
 function Brick:setDamaged(value)
   self.damaged = value
-  if self.damaged == 3 then
+  if self.damaged == 3 then --si la brique a ete touchee 3 fois, elle se brise
     self.broken = true
   end
 end
@@ -72,6 +71,7 @@ end
 
 
 -- TOUT EST A REVOIR ICI
+--Je vais creer 5 patterns de briques, donc ces fonctions vont degager
 
 function createBrick(line, column)
 
@@ -88,7 +88,8 @@ function createBrick(line, column)
 end
 
 function initializeBricks()
-    --[[ok cette fonction est cheloue je crois sincèrement que je vais la refaire, pour faire des patterns de briques personnalisés
+    --[[ok cette fonction est cheloue je crois sincèrement que je vais la refaire, pour faire des patterns de briques personnalisés,
+    en plus le gars du tuto s'est pas fait chier je pige pas ses variables
     (a voir après avec les collisions). je vais la laisser pour le moment même si j'ai pas tout pigé mais bref
     --]]
     bricks = {} -- Initialisation variable pour les briques
