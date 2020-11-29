@@ -81,6 +81,8 @@ function love.keypressed(key)
     elseif game_paused == true then
       game_paused == false      
     end
+  end
+  
   
 --fin de love.keypressed
 end
