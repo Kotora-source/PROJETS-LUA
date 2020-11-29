@@ -22,14 +22,15 @@ function love.load()
   initializeLives()
   initializeBall(r.height, r.y)
   
-  game_paused = false --Mise en pause du jeu, a tester
+  game_paused = false --Mise en pause du jeu
 
 --fin de love.load
 end
 
 function love.update(dt)
   -- Fonction pour mettre à jour (appelée à chaque frame)
-  if game_paused == false then
+  
+  if game_paused == false then --si le jeu n'est pas en pause
     
     --mouvements de la raquette (a revoir en creeant des fichiers objets)
     r:Movment(dt)
@@ -74,7 +75,7 @@ function love.keypressed(key)
       love.graphics.print(scale, 150, 300)
     end
     
-  --Met en pause le jeu, a tester
+  --Met en pause le jeu
   if key == 'p' then
     if game_paused == false then
       game_paused = true
