@@ -18,12 +18,16 @@ function love.load()
   
   love.window.setFullscreen(true, "desktop") -- Met en plein ecran
   
+  love.mouse.setVisible(false) --cache le curseur de la souris
+  
   math.randomseed(love.timer.getTime()) -- Initialisation de la graine avec un temps en ms
   
   r = Racket:new(nil)
-  initializeBricks()
+  
+  tab = createHeartPattern()--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
+  
   initializeLives()
-  initializeBall(r.height, r.y)
+  initializeBall(r:getHeight(), r:returnY())
   
   game_paused = false --Mise en pause du jeu
 
@@ -59,7 +63,7 @@ function love.draw()
   r:Affichage()
   
   --dessine les briques
-  drawBricks()
+  drawBricks(tab)
   
   --affichage des vies
   drawLives()

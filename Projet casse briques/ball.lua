@@ -32,8 +32,9 @@ function MovmentBall(dt, racket)
             if ball.y <= 0 then  -- Bordure haut
               ball.speedY = -ball.speedY
             elseif ball.y + ball.height >= love.graphics.getPixelHeight( ) then -- Bordure bas
-              lives.count = lives.count - 1 --C'EST LA COLLISION LA PLUS CASSEE QUE J'AI JAMAIS VUE DE MA VIE 
-              resetBall(racket:returnY()) -- FAUT QUE JE REFASSE CA C'EST NIMPORTE QUOI
+              lives.count = lives.count - 1 
+              resetBall(racket:returnY()) 
+              racket:resetRacket()
             end
 end
 

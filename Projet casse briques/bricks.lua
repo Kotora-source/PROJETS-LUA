@@ -2,12 +2,13 @@
 
 --Definition des attributs d'une brick
 Brick = {
-  broken = false, --Par defaut, une brick n'est pas brisee
+  broken = false, --Par defaut, une brick est intacte
   width = 0, --Largeur
   height = 0, --Hauteur
   x = 0, --Position x
   y = 0, --Position y
-  damaged = 0 --Endommagement de la brick
+  damaged = 0, --Endommagement de la brick
+  color = ''
 }
 
 -----------------------------------------------------------------------------------------
@@ -24,6 +25,7 @@ function Brick:new(o)
   self.x = 0
   self.y = 0
   self.damaged = 0 --compteur a 0 par defaut, il augmente selon le nbr de hits
+  self.color = 'blanc' --provisoire, je mettrais bientot un placeholder.
   return o
 end
 
@@ -53,12 +55,16 @@ function Brick:getDamaged()
   return self.damaged
 end
 
+function Brick:getColorBrick()
+  return self.color
+end
+
 -----------------------------------------------------------------------------------------
 --SETTERS
 function Brick:setDamaged(value)
   self.damaged = value
   if self.damaged == 3 then --si la brique a ete touchee 3 fois, elle se brise
-    self.broken = true
+    self:setBroken()
   end
 end
 
@@ -82,49 +88,82 @@ function Brick:setBroken()
   self.broken = true
 end
 
+function Brick:Restore()
+  self.broken = false
+  self.damaged = 0
+end
+
+function Brick:setColorBrick(color)
+  self.color = color
+end
+
 -----------------------------------------------------------------------------------------
 
--- TOUT EST A REVOIR ICI
---Je vais creer 3 a 5 motifs de dispositions de briques, donc ces fonctions vont degager
---plus je vais faire des imgs de briques (avec animations de brique qui s'abime et qui se brise)
+--FONCTIONS QUI CREENT LES MOTIFS DE BRIQUES
 
-function createBrick(line, column)
-
-  -- Fonction pour créer une brique et l'initialiser en fonction de sa position dans le mur
-  brick = Brick:new(nil)
+--Cree un motif coeur de briques
+function createHeartPattern()
+  -- template coeur
+  template = 
+  { {0, 1, 1, 1, 0, 1, 1, 1, 0},
+    {1, 1, 1, 1, 1, 1, 1, 1, 1},
+    {1, 1, 1, 1, 1, 1, 1, 1, 1},
+    {1, 1, 1, 1, 1, 1, 1, 1, 1},
+    {0, 1, 1, 1, 1, 1, 1, 1, 0},
+    {0, 0, 1, 1, 1, 1, 1, 0, 0},
+    {0, 0, 0, 1, 1, 1, 0, 0, 0},
+    {0, 0, 0, 0, 1, 0, 0, 0, 0}
+  }
   
-  brick.isNotBroken = true -- Brique pas encore cassée
-  brick.width = love.graphics.getPixelWidth() / BRICKS_PER_LINE - 5 -- Largeur
-  brick.height = love.graphics.getPixelHeight() / 35 -- Hauteur
-  brick.x = 2.5 + (column - 1) * (5 + brick.width) -- Position en abscisse
-  brick.y = line * (love.graphics.getPixelHeight() / 35 + 2.5) -- Position en ordonnée
-  return brick
+  nbrBricks = #template * #template[1]
   
-end
-
-function initializeBricks()
-    --[[ok cette fonction est cheloue je crois sincèrement que je vais la refaire, pour faire des patterns de briques personnalisés,
-    en plus le gars du tuto s'est pas fait chier je pige pas ses variables
-    (a voir après avec les collisions). je vais la laisser pour le moment même si j'ai pas tout pigé mais bref
-    --]]
-    bricks = {} -- Initialisation variable pour les briques
-    for line=1, BRICKS_PER_COLUMN do
-      table.insert(bricks, {}) -- Ajout d'une ligne
-      for column=1, BRICKS_PER_LINE do
-        local brick = createBrick(line, column)
-        table.insert(bricks[line], brick) -- Ajout d'une brique par colonne de la ligne
+  for i = 1, #template do --rempli le tableau de briques
+    for j = 1, #template[i] do
+      if template[i][j] == 1 then -- partout ou il y a un 1, ajoute une brique a la place
+          --Cree une brick
+          brick = Brick:new(nil)
+          
+          --Definition des attributs de Brick
+          brick:setHeight( love.graphics.getPixelHeight() / 35 ) --defini la hauteur
+          brick:setWidth( love.graphics.getPixelWidth() / #template[i] - 50 ) --defini la largeur
+          brick:setX( (love.graphics.getPixelWidth() / 10 ) + (j - 1) * (5 + brick:getWidth()) ) -- position en abscisse
+          brick:setY( i * (love.graphics.getPixelHeight() / 35 + 10) ) -- position en ordonnee
+          brick:setColorBrick('rose') --d efini la couleur des briques (provisoire)
+              
+          --place la brick dans le tableau a la place de la valeur 1
+          template[i][j] = brick
       end
     end
+  end
+    love.graphics.setColor(255, 105, 108) --defini la couleur sur rose, marche pas je sais pas ou le placer
+    return template
+  end
+
+
+
+--Cree un motif de fleur de briques
+function createFlowerPattern()
 
 end
 
-function drawBricks()
-  for line=1, #bricks do -- Ligne
-      for column=1, #bricks[line] do -- Colonne
-        local brick = bricks[line][column]
-        if brick.isNotBroken then -- Si la brique n'est pas cassée
-          love.graphics.rectangle('fill', brick.x, brick.y, brick.width, brick.height) -- Rectangle
+
+-----------------------------------------------------------------------------------------
+--FONCTION QUI DESSINE LES BRIQUES
+
+function drawBricks(tab)
+  --parcours le tableau de briques
+  for i = 1, #tab do
+    for j = 1, #tab[i] do
+      --si la valeur n'est pas egale a 0
+      if tab[i][j] ~= 0 then
+        --recuperation des attributs de la brique
+        local brick = tab[i][j]
+        --verification que la brique n'est pas cassee
+        if brick:getBroken() == false then
+          --dessine les briques, avec un bout arrondi
+          love.graphics.rectangle('fill', brick:returnX(), brick:returnY(), brick:getWidth(), brick:getHeight(), 10, 10)
         end
       end
+    end
   end
 end
