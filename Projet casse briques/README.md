@@ -11,3 +11,10 @@ https://hump.readthedocs.io/en/latest/gamestate.html
 https://www.reddit.com/r/love2d/comments/8oaun9/can_someone_do_a_example_on_how_to_pause_a_game/
 
 Musique et graphismes à venir (faits par des amis)
+
+Lua math
+http://www.luteus.biz/Download/LoriotPro_Doc/LUA/LUA_Training_FR/LUA_Fonctions_Math.html#mathsqrt
+
+IDEE
+spliter l'écran en 3 parties, avec le jeu au milieu, et sur les côtés afficher les scores, les vies, les balles à disposition, les bonus/malus, et d'autres infos type
+"appuyer sur ESC pour quitter" ou "P pour pause" jsp
