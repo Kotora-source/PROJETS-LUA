@@ -1,1 +1,2 @@
 --creer un menu de jeu
+--idees : système de points, avec mémoire quand on ferme le jeu // High scores

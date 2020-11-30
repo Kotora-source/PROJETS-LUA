@@ -39,7 +39,7 @@ function love.update(dt)
     r:Movment(dt)
     
     --mouvements de la balle
-    MovmentBall(dt)
+    MovmentBall(dt, r)
     
   end
   

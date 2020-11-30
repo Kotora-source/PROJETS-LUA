@@ -13,5 +13,5 @@ NB_LIVES = 3 -- Nombre de vies initiales
 PATH_LIFE = "images/life.png" -- Chemin image vie
 
 --constantes balle
-DEFAULT_SPEED_BX = 130 -- Vitesse horizontale
-DEFAULT_SPEED_BY = 335 -- Vitesse verticale
+DEFAULT_SPEED_BX = 250 -- Vitesse horizontale
+DEFAULT_SPEED_BY = 500 -- Vitesse verticale

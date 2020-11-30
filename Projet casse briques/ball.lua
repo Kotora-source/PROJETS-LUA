@@ -13,12 +13,12 @@ function resetBall(racketY)
   
   ball.speedY = -DEFAULT_SPEED_BY -- Vitesse verticale
   ball.speedX = math.random(-DEFAULT_SPEED_BX, DEFAULT_SPEED_BX) -- Vitesse horizontale
-  ball.x = love.graphics.getPixelWidth / 2 - ball.width / 2 -- Position en abscisse
+  ball.x = love.graphics.getPixelWidth() / 2 - ball.width / 2 -- Position en abscisse
   ball.y = racketY - 2 * ball.height - ball.height / 2 -- Position en ordonnée
   
 end
 
-function MovmentBall(dt)
+function MovmentBall(dt, racket)
   ball.x = ball.x + ball.speedX * dt -- Mise à jour position en abscisse de la balle
   ball.y = ball.y + ball.speedY * dt -- Mise à jour position en ordonnée de la balle
     
@@ -33,7 +33,7 @@ function MovmentBall(dt)
               ball.speedY = -ball.speedY
             elseif ball.y + ball.height >= love.graphics.getPixelHeight( ) then -- Bordure bas
               lives.count = lives.count - 1 --C'EST LA COLLISION LA PLUS CASSEE QUE J'AI JAMAIS VUE DE MA VIE 
-              resetBall(racket.y) -- FAUT QUE JE REFASSE CA C'EST NIMPORTE QUOI
+              resetBall(racket:returnY()) -- FAUT QUE JE REFASSE CA C'EST NIMPORTE QUOI
             end
 end
 
