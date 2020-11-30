@@ -1,11 +1,13 @@
-# Projet tiré d'un tuto : https://zestedesavoir.com/tutoriels/1399/un-jeu-de-casse-briques-en-lua-avec-love2d/
+# Projet tirÃ© d'un tuto : https://zestedesavoir.com/tutoriels/1399/un-jeu-de-casse-briques-en-lua-avec-love2d/
 
-# Premier projet commencé en Lua (07/10/2020)
+# Premier projet commencÃ© en Lua (07/10/2020)
 
-# Tentative d'amélioration en créant des classes objets + autres fonctionnalités au niveau du jeu + skins personnalisés
+# Tentative d'amÃ©lioration en crÃ©ant des classes objets + autres fonctionnalitÃ©s au niveau du jeu + skins personnalisÃ©s
 
 Gestionnaire de mise en pause
 https://hump.readthedocs.io/en/latest/gamestate.html
 --> a voir quand j'aurai le lvl.
 -----> a voir si je peux pas le coder moi-mÃªme, carrÃ©ment.
 https://www.reddit.com/r/love2d/comments/8oaun9/can_someone_do_a_example_on_how_to_pause_a_game/
+
+Musique et graphismes Ã  venir (faits par des amis)
