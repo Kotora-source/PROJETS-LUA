@@ -22,13 +22,9 @@ function love.load()
   
   math.randomseed(love.timer.getTime()) -- Initialisation de la graine avec un temps en ms
   
+  --Appel des fichiers sonores
+  --Une fois que tout sera pret, faire le mixage du son (les sons pas au meme volume que la musique par ex).
   soundRacket = love.audio.newSource(PATH_SOUND_RACKET, "static")
-  soundRacket:setFilter({
-        type = 'bandpass',
-        volume = .2,
-        highgain = 1,
-        lowgain = 0.5
-    })
   
   r = Racket:new(nil)
   
@@ -111,4 +107,15 @@ function love.keypressed(key)
   end
   
 --fin de love.keypressed
+end
+
+function love.focus(f)
+  --check si l'user est toujours sur la fenetre
+  if f == false then
+    game_paused = true
+  else
+    game_paused = false
+  end
+    
+  --fin de love.focus
 end
