@@ -17,9 +17,9 @@ function Racket:new(o)
   setmetatable(o, self) --lie les deux tables
   self.__index = self
   --Initialisation des attributs de Racket
-  self.speedX = 215 -- Vitesse horizontale
-  self.width = love.graphics.getWidth() / 4 -- Largeur
-  self.height = love.graphics.getPixelHeight( ) / 37 -- Hauteur
+  self.speedX = (love.graphics.getPixelWidth() / 5) -- Vitesse horizontale a revoir
+  self.width = ( love.graphics.getPixelWidth() * (4/10) ) / 4 -- Largeur
+  self.height = math.abs( math.ceil( ( (love.graphics.getPixelWidth() * (4/10)) ) * 2 / 100 ) ) -- Hauteur
   self.x = (love.graphics.getPixelWidth() - self.width) / 2 -- Position en abscisse
   self.y = love.graphics.getPixelHeight( ) - 64 -- Position en ordonnée
   return o
@@ -52,16 +52,17 @@ end
 --fais bouger la racket vers la gauche ou la droite, a revoir.
 function Racket:Movment(dt)
    -- Mouvement vers la gauche
-  if love.keyboard.isDown('left', 'q') and self.x > 0 then
+  if love.keyboard.isDown('left', 'q') and self.x > ( love.graphics.getPixelWidth() * (3/10) ) then
       self.x = self.x - (self.speedX*dt)
   -- Mouvement vers la droite
-  elseif love.keyboard.isDown('right', 'd') and self.x + self.width < love.graphics.getPixelWidth() then
+  elseif love.keyboard.isDown('right', 'd') and self.x + self.width < ( love.graphics.getPixelWidth() * (7/10) ) then
       self.x = self.x + (self.speedX*dt)
   end
 end
 
 --affiche la racket dans la fenetre LÖVE2D, a revoir egalement
 function Racket:Affichage()
+  love.graphics.setColor(0, 0, 0)
   love.graphics.rectangle('fill', self.x, self.y, self.width, self.height) -- Rectangle
 end
 

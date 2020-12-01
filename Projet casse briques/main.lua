@@ -22,6 +22,14 @@ function love.load()
   
   math.randomseed(love.timer.getTime()) -- Initialisation de la graine avec un temps en ms
   
+  soundRacket = love.audio.newSource(PATH_SOUND_RACKET, "static")
+  soundRacket:setFilter({
+        type = 'bandpass',
+        volume = .2,
+        highgain = 1,
+        lowgain = 0.5
+    })
+  
   r = Racket:new(nil)
   
   tab = createFlowerPattern()--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
@@ -49,7 +57,7 @@ function love.update(dt)
   
   --on reprends le tuto 3 min pour piger comment ils ont fait les mecs
   if collideRect(ball, r) then
-    collisionBallWithRacket(r) -- Collision entre la balle et la raquette
+    collisionBallWithRacket(r, soundRacket) -- Collision entre la balle et la raquette
   end
   --C'EST DE LA MERDE SON TUTO PUTAIN
 
@@ -58,8 +66,13 @@ end
 
 function love.draw()
   -- Fonction pour dessiner (appelée à chaque frame)
-  love.graphics.setBackgroundColor(0, 0, 0)
+  love.graphics.setBackgroundColor(1, 1, 1)
   
+  --dessine les bords sur les cotés
+  love.graphics.setColor(0.7, 0.5, 0.8)
+  love.graphics.rectangle('fill', 0, 0, (love.graphics.getPixelWidth() * (3/10) ), love.graphics.getPixelHeight())
+  love.graphics.rectangle('fill', ( love.graphics.getPixelWidth() * (7/10) ), 0, ( love.graphics.getPixelWidth() - ( love.graphics.getPixelWidth() * (7/10) ) ), love.graphics.getPixelHeight())
+  love.graphics.setColor(1, 1, 1)
   --dessine la raquette
   r:Affichage()
   

@@ -23,9 +23,9 @@ function MovmentBall(dt, racket)
   ball.y = ball.y + ball.speedY * dt -- Mise à jour position en ordonnée de la balle
     
     --a modifier c'est juste pour s'approprier le fonctionnement (créer une classe 'collisions')
-              if ball.x + ball.width >= love.graphics.getPixelWidth() then  -- Bordure droite
+              if ball.x + ball.width >= ( love.graphics.getPixelWidth() * (7/10) ) then  -- Bordure droite
               ball.speedX = -ball.speedX
-            elseif ball.x <= 0 then -- Bordure gauche
+            elseif ball.x <= ( love.graphics.getPixelWidth() * (3/10) ) then -- Bordure gauche
               ball.speedX = -ball.speedX
             end
 
@@ -39,10 +39,11 @@ function MovmentBall(dt, racket)
 end
 
 function drawBall()
+  love.graphics.setColor(0, 0, 0)
   love.graphics.rectangle('fill', ball.x, ball.y, ball.width, ball.height) -- Rectangle
 end
 
-function collisionBallWithRacket(racket)
+function collisionBallWithRacket(racket, sourcesound)
   
     -- Collision par la gauche (coin haut inclus)
     if ball.x < racket.x + 1/8 * racket.width and ball.speedX >= 0 then
@@ -63,5 +64,6 @@ function collisionBallWithRacket(racket)
     if ball.y < racket.y and ball.speedY > 0 then
       ball.speedY = -ball.speedY
   end
-
+  
+  love.audio.play(sourcesound)
 end

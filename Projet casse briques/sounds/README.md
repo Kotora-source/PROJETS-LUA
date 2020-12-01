@@ -1,5 +1,3 @@
-#Sons de briques et de raquette
+# Sons de briques et de raquette
 
-#Enregistrés avec un micro pourri et réalisés par moi-même avec une basse électrique pas folle
-
-#Faute de mieux.
+# Enregistrés grâce à Audacity le sang (qui a enlevé le grésillement aussi, meilleur logiciel) avec une basse électrique
