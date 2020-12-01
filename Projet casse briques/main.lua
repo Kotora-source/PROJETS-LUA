@@ -24,7 +24,7 @@ function love.load()
   
   r = Racket:new(nil)
   
-  tab = createHeartPattern()--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
+  tab = createFlowerPattern()--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
   
   initializeLives()
   initializeBall(r:getHeight(), r:returnY())
@@ -58,6 +58,7 @@ end
 
 function love.draw()
   -- Fonction pour dessiner (appelée à chaque frame)
+  love.graphics.setBackgroundColor(0, 0, 0)
   
   --dessine la raquette
   r:Affichage()

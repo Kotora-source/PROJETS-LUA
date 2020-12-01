@@ -45,7 +45,7 @@ end
 
 function love.draw()
   --affiche un diagramme de venn
-  love.graphics.setColor(1, 0, 0, 0.4)
+  love.graphics.setColor(0.1, 0.3, 0.6)--test de la couleur
 	love.graphics.circle('fill', baseX, baseY, radius)
 	love.graphics.setColor(0, 1, 0, 0.4)
 	love.graphics.circle('fill', baseX + radius / 2, baseY - offsetY, radius)

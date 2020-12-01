@@ -15,6 +15,36 @@ Musique et graphismes à venir (faits par des amis)
 Lua math
 http://www.luteus.biz/Download/LoriotPro_Doc/LUA/LUA_Training_FR/LUA_Fonctions_Math.html#mathsqrt
 
+Idees de motifs de briques :
+Dinosaure
+Crocodile
+Basse électrique
+
 IDEE
 spliter l'écran en 3 parties, avec le jeu au milieu, et sur les côtés afficher les scores, les vies, les balles à disposition, les bonus/malus, et d'autres infos type
 "appuyer sur ESC pour quitter" ou "P pour pause" jsp
+
+1ere partie : gauche
+Taille : 3/10 de l'écran
+Contient : 
+le nbr de vies restantes
+le titre du jeu
+le niveau sur lequel on se trouve (lvl 1, 2, ...)
+une img de background
+
+2e partie : jeu, gameplay : 
+Taille : 4/10 de l'écran
+Contient :
+les briques
+les balles
+la raquette
+une image de background
+
+3e partie : scores
+Taille : 3/10 de l'écran
+Contient :
+Le tableau des scores
+le compteur des scores
+le compteur des balles restantes (si plusieurs affichées à l'écran)
+Les items / bonus / malus actifs avec un timer
+Le temps passé sur le niveau (doit se stopper avec la pause)

@@ -62,7 +62,6 @@ end
 
 --affiche la racket dans la fenetre LÖVE2D, a revoir egalement
 function Racket:Affichage()
-  love.graphics.setColor(255, 255, 255) -- Couleur blanche, a modifer plus tard
   love.graphics.rectangle('fill', self.x, self.y, self.width, self.height) -- Rectangle
 end
 

@@ -98,20 +98,21 @@ function Brick:setColorBrick(color)
 end
 
 -----------------------------------------------------------------------------------------
-
 --FONCTIONS QUI CREENT LES MOTIFS DE BRIQUES
-
---Fonction qui rempli le tableau
-function createPattern(template) --@param template le tableau, return template
     --0 = sans brique
-    --1 = brique bleue
-    --2 = brique jaune
-    --3 = brique verte
-    --4 = brique orange
-    --5 = brique bleu clair
-    --6 = brique vert clair
-    --7 = brique rose
-    --8 = brique rouge
+    --1 = brique bleue : color (0.1, 0.3, 0.6)
+    --2 = brique jaune : color (1, 1, 0)
+    --3 = brique verte : color (0.1, 0.5, 0.1)
+    --4 = brique orange : color (0.9, 0.5, 0)
+    --5 = brique bleu clair : color (0.2, 0.5, 0.8)
+    --6 = brique vert clair : color (0.5, 0.6, 0.1)
+    --7 = brique rouge : color (0.7, 0, 0)
+    --8 = brique blanche : color (1, 1, 1)
+    --9 = brique COULEUR A DEFINIR : color (
+
+--Fonction qui rempli le tableau // pas encore optimale
+function createPattern(template) --@param template le tableau, return template
+    
   nbrBricks = #template * #template[1]
   
   for i = 1, #template do --rempli le tableau de briques
@@ -121,11 +122,15 @@ function createPattern(template) --@param template le tableau, return template
           brick = Brick:new(nil)
           
           --Definition des attributs de Brick
-          brick:setHeight( math.abs( math.ceil( (love.graphics.getPixelHeight() - nbrBricks) * 3 / 100 ) ) ) --defini la hauteur (pourcentage arrondi au supérieur en valeur absolue)
-          brick:setWidth( math.abs( math.ceil( (love.graphics.getPixelWidth() - nbrBricks) * 5 / 100 ) ) ) --defini la largeur (pourcentage arrondi au supérieur en valeur absolue)
-          brick:setX( (love.graphics.getPixelWidth() / 10 ) + (j - 1) * (5 + brick:getWidth()) ) -- position en abscisse
-          brick:setY( i * (love.graphics.getPixelHeight() / 35 + 10) ) -- position en ordonnee
-          brick:setColorBrick(template[i][j]) --defini la couleur des briques (provisoire)
+          -- defini la hauteur et la largeur (pourcentage arrondi au supérieur en valeur absolue, occupe 4/10 de l'ecran)
+          brick:setHeight( math.abs( math.ceil( ( (love.graphics.getPixelWidth() * (4/10)) - nbrBricks) * 5 / 100 ) ) ) 
+          brick:setWidth( math.abs( math.ceil( ( (love.graphics.getPixelWidth() * (4/10)) - nbrBricks) * 5 / 100 ) ) )
+          
+          --defini l'abscisse (sur 1/3 de l'ecran) et l'ordonnee (en fonction du nbr de bricks), arrondis au superieur en valeur absolue
+          brick:setX( math.abs( math.ceil( (love.graphics.getPixelWidth() * (4/10) ) + (j - 1) * (5 + brick:getWidth()) ) ) ) 
+          brick:setY( math.abs( math.ceil( i * (love.graphics.getPixelHeight() / nbrBricks + brick:getHeight()) + 5 ) ) ) 
+          
+          brick:setColorBrick(template[i][j]) --defini la couleur des briques 
           
           --Place la brick dans le tableau a la place de la valeur 1
           template[i][j] = brick
@@ -142,10 +147,10 @@ function createHeartPattern()
   template = 
   { {0, 7, 7, 7, 0, 7, 7, 7, 0},
     {7, 7, 7, 7, 7, 7, 7, 7, 7},
-    {7, 7, 7, 7, 7, 7, 7, 7, 7},
-    {7, 7, 7, 7, 7, 7, 7, 7, 7},
-    {0, 7, 7, 7, 7, 7, 7, 7, 0},
-    {0, 0, 7, 7, 7, 7, 7, 0, 0},
+    {7, 7, 7, 8, 7, 8, 7, 7, 7},
+    {7, 7, 8, 8, 8, 8, 8, 7, 7},
+    {0, 7, 7, 8, 8, 8, 7, 7, 0},
+    {0, 0, 7, 7, 8, 7, 7, 0, 0},
     {0, 0, 0, 7, 7, 7, 0, 0, 0},
     {0, 0, 0, 0, 7, 0, 0, 0, 0}
   }
@@ -180,28 +185,97 @@ function createFlowerPattern()
   }
   
   createPattern(template)
-  return(template)
+  return template
 end
+
+-- Cree un motif diamant de briques
+function createDiamondPattern()
+  template = {
+    {0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+    {0, 0, 1, 5, 5, 5, 1, 5, 5, 5, 1, 5, 5, 5, 1, 0 ,0},
+    {0, 1, 5, 5, 5, 1, 5, 5, 5, 5, 5, 1, 5, 5, 5, 1, 0},
+    {1, 5, 5, 5, 1, 5, 5, 5, 5, 5, 5, 5, 1, 5, 5, 5, 1},
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+    {0, 1, 5, 5, 1, 5, 5, 5, 5, 5, 5, 5, 1, 5, 5, 1, 0},
+    {0, 0, 1, 5, 5, 1, 5, 5, 5, 5, 5, 1, 5, 5, 1, 0, 0},
+    {0, 0, 0, 1, 5, 5, 1, 5, 5, 5, 1, 5, 5, 1, 0, 0, 0},
+    {0, 0, 0, 0, 1, 5, 5, 1, 5, 1, 5, 5, 1, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 1, 5, 5, 1, 5, 5, 1, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 1, 5, 5, 5, 1, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 1, 5, 1, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}
+  }
+  
+  createPattern(template)
+  return template
+end
+
 
 
 -----------------------------------------------------------------------------------------
 --FONCTION QUI DESSINE LES BRIQUES
 
+--Dessine l'image correspondante à l'id de l'image qu'on veut
+function drawImgBrick(brick, imgId)
+  --TEMPORAIRE : placeholders de couleurs
+  if imgId == 1 then
+    
+    love.graphics.setColor(0.1, 0.3, 0.6)
+    
+  elseif imgId == 2 then
+    
+    love.graphics.setColor(1, 1, 0)
+    
+  elseif imgId == 3 then
+    
+    love.graphics.setColor(0.1, 0.5, 0.1)
+    
+  elseif imgId == 4 then
+    
+    love.graphics.setColor(0.9, 0.5, 0)
+    
+  elseif imgId == 5 then
+    
+    love.graphics.setColor(0.2, 0.5, 0.8)
+    
+  elseif imgId == 6 then
+    
+    love.graphics.setColor(0.5, 0.6, 0.1)
+    
+  elseif imgId == 7 then
+    
+    love.graphics.setColor(0.7, 0, 0)
+    
+  elseif imgId == 8 then
+    
+    love.graphics.setColor(1, 1, 1)
+    
+  elseif imgId == 9 then
+    
+    --love.graphics.setColor()
+    
+  end
+  
+  --Dessine la brique
+  love.graphics.rectangle('fill', brick:returnX(), brick:returnY(), brick:getWidth(), brick:getHeight(), 5, 5)
+  --Reset la couleur en noir
+  love.graphics.setColor(1, 1, 1)
+end
+
+
+--Dessine le tableau de briques
 function drawBricks(tab)
   --parcours le tableau de briques
   for i = 1, #tab do
     for j = 1, #tab[i] do
       --si la valeur n'est pas egale a 0
       if tab[i][j] ~= 0 then
-        --recuperation des attributs de la brique
+        --recuperation des attributs de la brique en local
         local brick = tab[i][j]
         --verification que la brique n'est pas cassee
         if brick:getBroken() == false then
-          
-          love.graphics.setColor(255, 105, 180)
-          
-          --dessine les briques, avec un bout arrondi
-          love.graphics.rectangle('fill', brick:returnX(), brick:returnY(), brick:getWidth(), brick:getHeight(), 10, 10)
+          --Dessine la brique en fonction de sa couleur
+          drawImgBrick(brick, brick:getColorBrick())
         end
       end
     end
