@@ -20,6 +20,9 @@ Dinosaure
 Crocodile
 Basse électrique
 
+Skins de balle
+Skins de raquette
+
 IDEE
 Titre : Fairy Brick Adventures
 spliter l'écran en 3 parties, avec le jeu au milieu, et sur les côtés afficher les scores, les vies, les balles à disposition, les bonus/malus, et d'autres infos type
