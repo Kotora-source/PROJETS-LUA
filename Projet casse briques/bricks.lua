@@ -117,7 +117,7 @@ function createPattern(template) --@param template le tableau, return template
   
   for i = 1, #template do --rempli le tableau de briques
     for j = 1, #template[i] do --les cles commencent a 1
-      if template[i][j] ~= 0 then -- partout ou il y a un 1, ajoute une brique a la place
+      if template[i][j] ~= 0 then -- partout ou il y a un chiffre autre que 0, ajoute une brique a la place
           --Cree une brick
           brick = Brick:new(nil)
           
