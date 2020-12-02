@@ -127,9 +127,12 @@ function createPattern(template) --@param template le tableau, return template
           brick:setHeight( l ) 
           brick:setWidth( l )
           
+          --Trouve le centre
+          centre = (((love.graphics.getPixelWidth() * (4/10)) - (#template[i] * (5 + brick:getWidth()))) - 5) / 2 
+          
           --defini l'abscisse (sur 1/3 de l'ecran) et l'ordonnee (en fonction du nbr de bricks), arrondis au superieur en valeur absolue
-          brick:setX( math.abs( math.ceil( (love.graphics.getPixelWidth() * (3/10) ) + j * (5 + brick:getWidth()) ) ) ) 
-          brick:setY( math.abs( math.ceil( i * (love.graphics.getPixelHeight() / nbrBricks + brick:getHeight()) + 5 ) ) ) 
+          brick:setX( math.abs( math.ceil( (love.graphics.getPixelWidth() * (3/10) ) + (j-1) * ( 5 + brick:getWidth() ) + centre ) ) ) 
+          brick:setY( math.abs( math.ceil( i * ( 5 + brick:getWidth() ) ) ) ) 
           
           brick:setColorBrick(template[i][j]) --defini la couleur des briques 
           

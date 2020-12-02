@@ -55,3 +55,13 @@ le compteur des scores
 le compteur des balles restantes (si plusieurs affichées à l'écran)
 Les items / bonus / malus actifs avec un timer
 Le temps passé sur le niveau (doit se stopper avec la pause)
+
+
+Soit a1 l'angle entre le vecteur vitesse avant choc et une reference quelconque ( on va prendre l'horizontale).
+ 
+Soit a2 l'angle entre la droite passant par le centre de la boule et le coin, et cette même horizontale.  
+a2=arctan((Ycentre-Ycoin)/(Xcentre-Xcoin))
+ 
+L'angle entre vecteur vitesse de la boule apres le choc et l'horizontale (encore elle) est tout simplement :
+ 
+2*a2 - a1 - Pi
