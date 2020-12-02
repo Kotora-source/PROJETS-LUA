@@ -1,7 +1,7 @@
 function initializeBall(racketHeight, racketY)
   
   ball = {} -- Initialisation variable pour la balle
-  ball.width, ball.height = racketHeight * 0.75, racketHeight * 0.75  -- Taille
+  ball.width, ball.height = racketHeight * 0.5, racketHeight * 0.5  -- Taille
   ball.speedY = -DEFAULT_SPEED_BY -- Vitesse verticale
   ball.speedX = math.random(-DEFAULT_SPEED_BX, DEFAULT_SPEED_BX) -- Vitesse horizontale
   ball.x = love.graphics.getPixelWidth() / 2 - ball.width / 2 -- Position en abscisse
@@ -25,7 +25,7 @@ function MovmentBall(dt, racket)
     --a modifier c'est juste pour s'approprier le fonctionnement (créer une classe 'collisions')
               if ball.x + ball.width >= ( love.graphics.getPixelWidth() * (7/10) ) then  -- Bordure droite
               ball.speedX = -ball.speedX
-            elseif ball.x <= ( love.graphics.getPixelWidth() * (3/10) ) then -- Bordure gauche
+            elseif ball.x - ball.width <= ( love.graphics.getPixelWidth() * (3/10) ) then -- Bordure gauche
               ball.speedX = -ball.speedX
             end
 
@@ -40,13 +40,13 @@ end
 
 function drawBall()
   love.graphics.setColor(0, 0, 0)
-  love.graphics.rectangle('fill', ball.x, ball.y, ball.width, ball.height) -- Rectangle
+  love.graphics.circle('fill', ball.x, ball.y, ball.width) -- Rectangle
 end
 
 function collisionBallWithRacket(racket, sourcesound)
   
     -- Collision par la gauche (coin haut inclus)
-    if ball.x < racket.x + 1/8 * racket.width and ball.speedX >= 0 then
+    if ball.x < racket.x + 1/8 * racket.width and ball.speedX >= 0 then --je pige rien c'est exceptionnel, une **** en maths bonjour
       if ball.speedX <= DEFAULT_SPEED_BX/2 then -- Si vitesse trop faible
         ball.speedX = -math.random(0.75*DEFAULT_SPEED_BX, DEFAULT_SPEED_BX) -- Nouvelle vitesse
       else
@@ -61,7 +61,7 @@ function collisionBallWithRacket(racket, sourcesound)
       end
     end
     -- Collision par le haut
-    if ball.y < racket.y and ball.speedY > 0 then
+    if ball.y - ball.width < racket.y and ball.speedY > 0 then
       ball.speedY = -ball.speedY
   end
   
