@@ -15,6 +15,9 @@ Musique et graphismes à venir (faits par des amis)
 Lua math
 http://www.luteus.biz/Download/LoriotPro_Doc/LUA/LUA_Training_FR/LUA_Fonctions_Math.html#mathsqrt
 
+Crack absolu des collisions :
+https://pub.phyks.me/sdz/sdz/eorie-des-collisions.html
+
 Idees de motifs de briques :
 Dinosaure
 Crocodile
