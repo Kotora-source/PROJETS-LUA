@@ -128,18 +128,30 @@ function Ball:collisionBallWithRacket(racket, sourcesound)
 end
 
 --Cree la collision entre le tableau de briques et la ball
-function Ball:collisionBallWithBrickTab(Tab, sourcesound)
+function Ball:collisionBallWithBrickTab(Tab, sourcesound1, sourcesound2)
   --Parcourt le tableau
   for i = 1, #Tab do
     for j = 1, #Tab[i] do
+      
       --partout ou il y a une brique
       if Tab[i][j] ~= 0 then 
-        --si la briques n'est pas brisee
+        
+        --si la brique n'est pas brisee, et qu'elle est touchee par la balle
         if Tab[i][j]:getBroken() == false and collideRect(self, Tab[i][j]) then
-          self:collisionBallWithBrick(Tab[i][j])
-          love.audio.play(sourcesound)
+          
+          self:collisionBallWithBrick(Tab[i][j]) --applique la collision entre la balle et la brique
+          Tab[i][j]:decreaseResistance() --abime la brique
+          love.audio.play(sourcesound1) --joue le son d'une brique touchee
+          
+          --si le brique casse
+          if Tab[i][j]:getBroken() then 
+            love.audio.play(sourcesound2) --joue le son d'une brique qui se brise
+          end
+          
         end
+        
       end
+      
     end
   end
 end
@@ -162,7 +174,5 @@ function Ball:collisionBallWithBrick(brick)
     if self.y > brick.y and self.speedY < 0 then
       self.speedY = -self.speedY
     end
-  -- Brique maintenant cassée
-  brick:setBroken() 
 end
 

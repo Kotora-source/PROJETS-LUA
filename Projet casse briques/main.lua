@@ -25,11 +25,12 @@ function love.load()
   --Appel des fichiers sonores
   --Une fois que tout sera pret, faire le mixage du son (les sons pas au meme volume que la musique par ex).
   soundRacket = love.audio.newSource(PATH_SOUND_RACKET, "static")
-  soundBrick = love.audio.newSource(PATH_SOUND_BREAKING_BRICK, "static")
+  soundBrick = love.audio.newSource(PATH_SOUND_BRICK, "static")
+  soundBreakingBrick = love.audio.newSource(PATH_SOUND_BREAKING_BRICK, "static")
   
   r = Racket:new(nil)
   
-  tab = createBrickPattern(1)--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
+  tab = createBrickPattern(4)--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
   
   initializeLives()
   
@@ -60,7 +61,7 @@ function love.update(dt)
     ball:collisionBallWithRacket(r, soundRacket) -- Collision entre la balle et la raquette
   end
   
-  ball:collisionBallWithBrickTab(tab, soundBrick)
+  ball:collisionBallWithBrickTab(tab, soundBrick, soundBreakingBrick)
 
 --fin de love.update
 end

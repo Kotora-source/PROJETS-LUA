@@ -7,7 +7,7 @@ Brick = {
   height = 0, --Hauteur
   x = 0, --Position x
   y = 0, --Position y
-  damaged = 0, --Endommagement de la brick
+  resistance = 0, --Endommagement de la brick
   color = ''
 }
 
@@ -24,7 +24,7 @@ function Brick:new(o)
   self.height = 0
   self.x = 0
   self.y = 0
-  self.damaged = 0 --compteur a 0 par defaut, il augmente selon le nbr de hits
+  self.resistance = 0 --compteur a 0 par defaut, il augmente selon le nbr de hits
   self.color = 0 --provisoire, je mettrais bientot un placeholder.
   return o
 end
@@ -51,8 +51,8 @@ function Brick:getHeight()
   return self.height
 end
 
-function Brick:getDamaged()
-  return self.damaged
+function Brick:getResistance()
+  return self.resistance
 end
 
 function Brick:getColorBrick()
@@ -61,9 +61,9 @@ end
 
 -----------------------------------------------------------------------------------------
 --SETTERS
-function Brick:setDamaged(value)
-  self.damaged = value
-  if self.damaged == 3 then --si la brique a ete touchee 3 fois, elle se brise
+function Brick:decreaseResistance()
+  self.resistance = self.resistance - 1
+  if self.resistance <= 0 then --si la brique a ete touchee X fois, elle se brise
     self:setBroken()
   end
 end
@@ -88,9 +88,9 @@ function Brick:setBroken()
   self.broken = true
 end
 
-function Brick:Restore()
+function Brick:Restore(resistance)
   self.broken = false
-  self.damaged = 0
+  self.resistance = resistance
 end
 
 function Brick:setColorBrick(color)
