@@ -25,13 +25,17 @@ function love.load()
   --Appel des fichiers sonores
   --Une fois que tout sera pret, faire le mixage du son (les sons pas au meme volume que la musique par ex).
   soundRacket = love.audio.newSource(PATH_SOUND_RACKET, "static")
+  soundBrick = love.audio.newSource(PATH_SOUND_BREAKING_BRICK, "static")
   
   r = Racket:new(nil)
   
-  tab = createBrickPattern(2)--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
+  tab = createBrickPattern(3)--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
   
   initializeLives()
-  initializeBall(r:getHeight(), r:returnY())
+  
+  ball = Ball:new(nil)
+  
+  ball:initializeBall(r:getHeight(), r:returnY())
   
   game_paused = false --Mise en pause du jeu
 
@@ -47,15 +51,16 @@ function love.update(dt)
     r:Movment(dt)
     
     --mouvements de la balle
-    MovmentBall(dt, r)
+    ball:MovmentBall(dt, r)
     
   end
   
   --on reprends le tuto 3 min pour piger comment ils ont fait les mecs
   if collideRect(ball, r) then
-    collisionBallWithRacket(r, soundRacket) -- Collision entre la balle et la raquette
+    ball:collisionBallWithRacket(r, soundRacket) -- Collision entre la balle et la raquette
   end
-  --C'EST DE LA MERDE SON TUTO PUTAIN
+  
+  ball:collisionBallWithBrickTab(tab, soundBrick)
 
 --fin de love.update
 end
@@ -79,7 +84,7 @@ function love.draw()
   drawLives()
   
   --affichage de la balle
-  drawBall()
+  ball:drawBall()
 
 --fin de love.draw
 end
