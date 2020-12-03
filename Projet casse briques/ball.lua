@@ -131,7 +131,7 @@ end
 function Ball:collisionBallWithBrickTab(Tab, sourcesound)
   --Parcourt le tableau
   for i = 1, #Tab do
-    for j = 1, #Tab do
+    for j = 1, #Tab[i] do
       --partout ou il y a une brique
       if Tab[i][j] ~= 0 then 
         --si la briques n'est pas brisee
