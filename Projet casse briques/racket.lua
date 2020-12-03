@@ -17,7 +17,7 @@ function Racket:new(o)
   setmetatable(o, self) --lie les deux tables
   self.__index = self
   --Initialisation des attributs de Racket
-  self.speedX = (love.graphics.getPixelWidth() / 5) -- Vitesse horizontale a revoir
+  self.speedX = (love.graphics.getPixelWidth() / 4) -- Vitesse horizontale a revoir
   self.width = ( love.graphics.getPixelWidth() * (4/10) ) / 4 -- Largeur
   self.height = math.abs( math.ceil( ( (love.graphics.getPixelWidth() * (4/10)) ) * 2 / 100 ) ) -- Hauteur
   self.x = (love.graphics.getPixelWidth() - self.width) / 2 -- Position en abscisse

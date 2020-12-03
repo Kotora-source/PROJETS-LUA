@@ -7,8 +7,8 @@ NB_LIVES = 3 -- Nombre de vies initiales
 PATH_LIFE = "img/life.png" -- Chemin image vie
 
 --constantes balle
-DEFAULT_SPEED_BX = 250 -- Vitesse horizontale
-DEFAULT_SPEED_BY = 500 -- Vitesse verticale
+DEFAULT_SPEED_BX = 300 -- Vitesse horizontale
+DEFAULT_SPEED_BY = 600 -- Vitesse verticale
 
 --constantes son
 PATH_SOUND_RACKET = "sounds/brick_sound.mp3"
