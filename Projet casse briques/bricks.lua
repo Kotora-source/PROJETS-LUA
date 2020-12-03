@@ -108,31 +108,29 @@ end
     --6 = brique vert clair : color (0.5, 0.6, 0.1)
     --7 = brique rouge : color (0.7, 0, 0)
     --8 = brique blanche : color (1, 1, 1)
-    --9 = brique COULEUR A DEFINIR : color (
+    --9 = brique noire : color (0, 0, 0)
 
 --Fonction qui rempli le tableau // pas encore optimale
 function createPattern(template) --@param template le tableau, return template
-    
-  nbrBricks = #template * #template[1]
-  
-  for i = 1, #template do --rempli le tableau de briques
+  --Parcourt le tableau de briques
+  for i = 1, #template do
     for j = 1, #template[i] do --les cles commencent a 1
       if template[i][j] ~= 0 then -- partout ou il y a un chiffre autre que 0, ajoute une brique a la place
           --Cree une brick
           brick = Brick:new(nil)
           
           --Definition des attributs de Brick
-          -- defini la hauteur et la largeur (pourcentage arrondi au supérieur en valeur absolue, occupe 4/10 de l'ecran)
-          l = math.abs( math.ceil( ( (love.graphics.getPixelWidth() * (4/10)) - nbrBricks) * 5 / 100 ) )
+          -- defini la hauteur et la largeur (s'adapte a la largeur de chaque motif, occupe 3.5/10 de l'ecran)
+          l = math.ceil( (love.graphics.getPixelWidth() * (3.5/10)) / #template[1] )
           brick:setHeight( l ) 
           brick:setWidth( l )
           
           --Trouve le centre
-          centre = (((love.graphics.getPixelWidth() * (4/10)) - (#template[i] * (5 + brick:getWidth()))) - 5) / 2 
+          centre = (((love.graphics.getPixelWidth() * (4/10)) - (#template[i] * (1 + brick:getWidth()))) - 1) / 2 
           
           --defini l'abscisse (sur 1/3 de l'ecran) et l'ordonnee (en fonction du nbr de bricks), arrondis au superieur en valeur absolue
-          brick:setX( math.abs( math.ceil( (love.graphics.getPixelWidth() * (3/10) ) + (j-1) * ( 5 + brick:getWidth() ) + centre ) ) ) 
-          brick:setY( math.abs( math.ceil( i * ( 5 + brick:getWidth() ) ) ) ) 
+          brick:setX( math.abs( math.ceil( (love.graphics.getPixelWidth() * (3/10) ) + (j-1) * ( 1 + brick:getWidth() ) + centre ) ) ) 
+          brick:setY( math.abs( math.ceil( i * ( 1 + brick:getWidth() ) ) ) ) 
           
           brick:setColorBrick(template[i][j]) --defini la couleur des briques 
           
@@ -148,7 +146,7 @@ end
 --Cree un motif de briques
 function createBrickPattern(number)
   if number == 1 then
-    --Motif de coeur
+    --Motif de coeur (72)
     template = 
     { 
       {0, 7, 7, 7, 0, 7, 7, 7, 0},
@@ -161,7 +159,7 @@ function createBrickPattern(number)
       {0, 0, 0, 0, 7, 0, 0, 0, 0}
     }
   elseif number == 2 then
-    --Motif de fleur d'hibiscus
+    --Motif de fleur d'hibiscus (340)
     template = 
     {
       {0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -183,7 +181,7 @@ function createBrickPattern(number)
       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0}
     }
   elseif number == 3 then
-    --Motif de diamant
+    --Motif de diamant (221)
     template = 
     {
       {0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
@@ -199,6 +197,32 @@ function createBrickPattern(number)
       {0, 0, 0, 0, 0, 0, 1, 5, 5, 5, 1, 0, 0, 0, 0, 0, 0},
       {0, 0, 0, 0, 0, 0, 0, 1, 5, 1, 0, 0, 0, 0, 0, 0, 0},
       {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}
+    }
+  elseif number == 4 then
+    --Motif etoile (462)
+    template = 
+    {
+      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 4, 4, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 9, 4, 2, 2, 4, 9, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 9, 4, 2, 2, 2, 2, 4, 9, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 9, 4, 2, 2, 2, 2, 4, 9, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 9, 4, 2, 2, 2, 2, 2, 2, 4, 9, 0, 0, 0, 0, 0, 0},
+      {9, 9, 9, 9, 9, 9, 4, 2, 2, 2, 2, 2, 2, 2, 2, 4, 9, 9, 9, 9, 9, 0},
+      {9, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 9},
+      {9, 4, 2, 2, 2, 2, 9, 8, 2, 2, 2, 2, 2, 2, 8, 9, 2, 2, 2, 2, 4, 9},
+      {0, 9, 4, 2, 2, 2, 9, 9, 2, 2, 2, 2, 2, 2, 9, 9, 2, 2, 2, 4, 9, 0},
+      {0, 0, 9, 4, 2, 7, 7, 2, 2, 2, 2, 2, 2, 2, 2, 7, 7, 2, 4, 9, 0, 0},
+      {0, 0, 9, 4, 2, 2, 2, 2, 2, 9, 2, 2, 9, 2, 2, 2, 2, 2, 4, 9, 0, 0},
+      {0, 0, 0, 9, 4, 2, 2, 2, 2, 9, 9, 9, 9, 2, 2, 2, 2, 4, 9, 0, 0, 0},
+      {0, 0, 0, 0, 9, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 9, 0, 0, 0, 0},
+      {0, 0, 0, 0, 9, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 9, 0, 0, 0, 0},
+      {0, 0, 0, 9, 4, 2, 2, 2, 2, 4, 4, 4, 4, 2, 2, 2, 2, 4, 9, 0, 0, 0},
+      {0, 0, 0, 9, 4, 2, 2, 2, 4, 9, 9, 9, 9, 4, 2, 2, 2, 4, 9, 0, 0, 0},
+      {0, 0, 9, 4, 2, 2, 2, 4, 9, 0, 0, 0, 0, 9, 4, 2, 2, 2, 4, 9, 0, 0},
+      {0, 0, 9, 4, 2, 4, 4, 9, 0, 0, 0, 0, 0, 0, 9, 4, 4, 2, 4, 9, 0, 0},
+      {0, 0, 9, 4, 4, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 4, 4, 9, 0, 0},
+      {0, 0, 9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 0, 0}
     }
   end
   createPattern(template)
@@ -245,7 +269,7 @@ function drawImgBrick(brick, imgId)
     
   elseif imgId == 9 then
     
-    --love.graphics.setColor()
+    love.graphics.setColor(0, 0, 0)
     
   end
   
