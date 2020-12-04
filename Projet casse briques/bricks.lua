@@ -25,6 +25,7 @@ function Brick:new(o)
   self.x = 0
   self.y = 0
   self.resistance = 0 --compteur a 0 par defaut, il augmente selon le nbr de hits
+  self.memoryresist = 0 --garde en memoire la resistance de base de la brique
   self.color = 0 --provisoire, je mettrais bientot un placeholder.
   return o
 end
@@ -59,6 +60,7 @@ function Brick:getColorBrick()
   return self.color
 end
 
+
 -----------------------------------------------------------------------------------------
 --SETTERS
 function Brick:decreaseResistance()
@@ -66,6 +68,11 @@ function Brick:decreaseResistance()
   if self.resistance <= 0 then --si la brique a ete touchee X fois, elle se brise
     self:setBroken()
   end
+end
+
+function Brick:setResistance(value)
+  self.resistance = value
+  self.memoryresist = value
 end
 
 function Brick:setWidth(value)
@@ -88,9 +95,9 @@ function Brick:setBroken()
   self.broken = true
 end
 
-function Brick:Restore(resistance)
+function Brick:Restore()
   self.broken = false
-  self.resistance = resistance
+  self.resistance = self.memoryresist
 end
 
 function Brick:setColorBrick(color)
@@ -225,8 +232,8 @@ function createBrickPattern(number)
       {0, 0, 9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 0, 0}
     }
   end
-  createPattern(template)
-  return template
+  
+  return createPattern(template)
 end
 
 -----------------------------------------------------------------------------------------

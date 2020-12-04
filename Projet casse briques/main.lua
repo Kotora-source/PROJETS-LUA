@@ -9,6 +9,7 @@ require ('bricks')
 require ('lives')
 require ('ball')
 require('collisions')
+require('menu')
 
 -- pour écrire dans la console au fur et à mesure, facilitant ainsi le débogage
 io.stdout:setvbuf('no') 
@@ -30,7 +31,7 @@ function love.load()
   
   r = Racket:new(nil)
   
-  tab = createBrickPattern(4)--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
+  tab = createBrickPattern(1)--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
   
   initializeLives()
   
@@ -39,6 +40,8 @@ function love.load()
   ball:initializeBall(r:getHeight(), r:returnY())
   
   game_paused = false --Mise en pause du jeu
+  
+  restoregame = false
 
 --fin de love.load
 end
@@ -56,13 +59,28 @@ function love.update(dt)
     
   end
   
-  --on reprends le tuto 3 min pour piger comment ils ont fait les mecs
   if collideRect(ball, r) then
     ball:collisionBallWithRacket(r, soundRacket) -- Collision entre la balle et la raquette
   end
   
   ball:collisionBallWithBrickTab(tab, soundBrick, soundBreakingBrick)
+  
+  
+  --TESTS
+  test = ChecksifBrickTabisBroken(tab)
+  
+  if test == true then
+    game_paused = true
+  end
 
+  
+  if restoregame == true then
+    RestoreBrickTab(tab)
+    restoregame = false
+  end
+  
+  --ENDTESTS
+  
 --fin de love.update
 end
 
@@ -86,6 +104,12 @@ function love.draw()
   
   --affichage de la balle
   ball:drawBall()
+  
+  --TESTS
+  if test == true then
+    drawMenuRestoreLvl()
+  end
+  --ENDTESTS
 
 --fin de love.draw
 end
@@ -110,6 +134,14 @@ function love.keypressed(key)
     elseif game_paused == true then
       game_paused = false      
     end
+  end
+  
+  if key == 'x' and test == true then
+    restoregame = true
+  end
+  
+  if key == 't' then
+    DestroyallBricks(tab)
   end
   
 --fin de love.keypressed
