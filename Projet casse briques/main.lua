@@ -17,7 +17,7 @@ io.stdout:setvbuf('no')
 function love.load()
   -- Fonction pour initialiser le jeu (appelée au début de celui-ci)
   
-  --love.window.setFullscreen(true, "desktop") -- Met en plein ecran
+  love.window.setFullscreen(true, "desktop") -- Met en plein ecran
   
   love.mouse.setVisible(false) --cache le curseur de la souris
   
@@ -31,7 +31,7 @@ function love.load()
   
   r = Racket:new(nil)
   
-  tab = createBrickPattern(2)--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
+  tab = createBrickPattern(1)--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
   
   initializeLives()
   
@@ -64,22 +64,6 @@ function love.update(dt)
   end
   
   ball:collisionBallWithBrickTab(tab, soundBrick, soundBreakingBrick)
-  
-  
-  --TESTS
-  test = ChecksifBrickTabisBroken(tab)
-  
-  if test == true then
-    game_paused = true
-  end
-
-  
-  if restoregame == true then
-    RestoreBrickTab(tab)
-    restoregame = false
-  end
-  
-  --ENDTESTS
   
 --fin de love.update
 end
@@ -134,14 +118,6 @@ function love.keypressed(key)
     elseif game_paused == true then
       game_paused = false      
     end
-  end
-  
-  if key == 'x' and test == true then
-    restoregame = true
-  end
-  
-  if key == 't' then
-    DestroyallBricks(tab)
   end
   
 --fin de love.keypressed

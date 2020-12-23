@@ -71,8 +71,8 @@ end
 
 --Reset la balle a sa position initiale
 function Ball:resetBall(racketY)
-  self.speedY = -DEFAULT_SPEED_BY -- Vitesse verticale
-  self.speedX = math.random(-DEFAULT_SPEED_BX, DEFAULT_SPEED_BX) -- Vitesse horizontale
+  self.speedY = - (love.graphics.getPixelHeight() / 2) -- Vitesse verticale
+  self.speedX = math.random(-(love.graphics.getPixelWidth() / 3), (love.graphics.getPixelHeight() / 2)) -- Vitesse horizontale
   self.x = love.graphics.getPixelWidth() / 2 - self.width / 2 -- Position en abscisse
   self.y = racketY - 2 * self.height - self.height / 2 -- Position en ordonnée
 end
@@ -98,7 +98,7 @@ end
 
 --Dessine la balle
 function Ball:drawBall()
-  love.graphics.setColor(1, 1, 1)
+  love.graphics.setColor(0, 0, 0)
   love.graphics.circle('fill', self.x, self.y, self.width) -- Rectangle
 end
 
@@ -106,15 +106,15 @@ end
 function Ball:collisionBallWithRacket(racket, sourcesound)
     -- Collision par la gauche (coin haut inclus)
     if self.x < racket.x + 2/8 * racket.width and self.speedX >= 0 then
-      if self.speedX <= DEFAULT_SPEED_BX/2 then -- Si vitesse trop faible
-        self.speedX = math.random(0.75*DEFAULT_SPEED_BX, DEFAULT_SPEED_BX) -- Nouvelle vitesse
+      if self.speedX <= (love.graphics.getPixelWidth() / 3) / 2 then -- Si vitesse trop faible
+        self.speedX = math.random(0.75 * (love.graphics.getPixelWidth() / 3), (love.graphics.getPixelWidth() / 3)) -- Nouvelle vitesse
       else
         self.speedX = -self.speedX
       end
     -- Collision par la droite (coin haut inclus)
     elseif self.x > racket.x + 6/8 * racket.width and self.speedX <= 0 then
-      if self.speedX >= -DEFAULT_SPEED_BX/2 then  -- Si vitesse trop faible
-        self.speedX = -math.random(0.75*DEFAULT_SPEED_BX, DEFAULT_SPEED_BX) -- Nouvelle vitesse
+      if self.speedX >= -(love.graphics.getPixelWidth() / 3) / 2 then  -- Si vitesse trop faible
+        self.speedX = -math.random(0.75 * (love.graphics.getPixelWidth() / 3), (love.graphics.getPixelWidth() / 3)) -- Nouvelle vitesse
       else 
         self.speedX = -self.speedX
       end

@@ -6,10 +6,6 @@ PATH_ICON = "img/icon.png" -- Chemin image icône
 NB_LIVES = 3 -- Nombre de vies initiales
 PATH_LIFE = "img/life.png" -- Chemin image vie
 
---constantes balle
-DEFAULT_SPEED_BX = 300 -- Vitesse horizontale
-DEFAULT_SPEED_BY = 600 -- Vitesse verticale
-
 --constantes son
 PATH_SOUND_RACKET = "sounds/racket_sound.mp3"
 PATH_SOUND_BREAKING_BRICK = "sounds/breaking_brick.mp3"
