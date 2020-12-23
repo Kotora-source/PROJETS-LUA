@@ -14,6 +14,12 @@ require('menu')
 -- pour écrire dans la console au fur et à mesure, facilitant ainsi le débogage
 io.stdout:setvbuf('no') 
 
+--[[
+  NOTE :
+    On migrera tout le code qui est là dans "maingame.lua" : ça sera plus propre et plus clair.
+--]]
+
+
 function love.load()
   -- Fonction pour initialiser le jeu (appelée au début de celui-ci)
   
@@ -41,7 +47,7 @@ function love.load()
   
   game_paused = false --Mise en pause du jeu
   
-  restoregame = false
+  score = 0
 
 --fin de love.load
 end
@@ -63,7 +69,10 @@ function love.update(dt)
     ball:collisionBallWithRacket(r, soundRacket) -- Collision entre la balle et la raquette
   end
   
-  ball:collisionBallWithBrickTab(tab, soundBrick, soundBreakingBrick)
+  if ball:collisionBallWithBrickTab(tab, soundBrick, soundBreakingBrick) then
+    score = tabscore(score, tab)
+  end
+  
   
 --fin de love.update
 end
@@ -89,11 +98,8 @@ function love.draw()
   --affichage de la balle
   ball:drawBall()
   
-  --TESTS
-  if test == true then
-    drawMenuRestoreLvl()
-  end
-  --ENDTESTS
+  --affichage des scores
+  drawscore(score)
 
 --fin de love.draw
 end

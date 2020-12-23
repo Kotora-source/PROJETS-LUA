@@ -174,5 +174,6 @@ function Ball:collisionBallWithBrick(brick)
     if self.y > brick.y and self.speedY < 0 then
       self.speedY = -self.speedY
     end
+    return true
 end
 
