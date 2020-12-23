@@ -52,10 +52,10 @@ end
 --mouvement de la racket
 function Racket:Movment(dt)
    -- Mouvement vers la gauche
-  if love.keyboard.isDown('left', 'q') and self.x > ( love.graphics.getPixelWidth() * (3/10) ) then
+  if love.keyboard.isDown('left', 'q') and self.x >= ( love.graphics.getPixelWidth() * (3/10) ) then
       self.x = self.x - (self.speedX*dt)
   -- Mouvement vers la droite
-  elseif love.keyboard.isDown('right', 'd') and self.x + self.width < ( love.graphics.getPixelWidth() * (7/10) ) then
+  elseif love.keyboard.isDown('right', 'd') and self.x + self.width <= ( love.graphics.getPixelWidth() * (7/10) ) then
       self.x = self.x + (self.speedX*dt)
   end
 end
