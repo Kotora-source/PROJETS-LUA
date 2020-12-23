@@ -49,7 +49,7 @@ end
 
 -----------------------------------------------------------------------------------------
 --METHODES
---fais bouger la racket vers la gauche ou la droite, a revoir.
+--mouvement de la racket
 function Racket:Movment(dt)
    -- Mouvement vers la gauche
   if love.keyboard.isDown('left', 'q') and self.x > ( love.graphics.getPixelWidth() * (3/10) ) then
@@ -60,13 +60,13 @@ function Racket:Movment(dt)
   end
 end
 
---affiche la racket dans la fenetre LÖVE2D, a revoir egalement
+--affichage de la racket
 function Racket:Affichage()
   love.graphics.setColor(0, 0, 0)
   love.graphics.rectangle('fill', self.x, self.y, self.width, self.height) -- Rectangle
 end
 
---deja modifiee mais pas top top hein
+--reset la racket
 function Racket:resetRacket()
   self.x = (love.graphics.getPixelWidth() - self.width) / 2 -- Position en abscisse
   self.y = love.graphics.getPixelHeight() - 64 -- Position en ordonnée
