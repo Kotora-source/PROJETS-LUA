@@ -70,8 +70,9 @@ function love.update(dt)
   end
   
   if ball:collisionBallWithBrickTab(tab, soundBrick, soundBreakingBrick) then
-    score = tabscore(score, tab)
+    score = tabscores(score, tab)
   end
+  
   
   
 --fin de love.update
