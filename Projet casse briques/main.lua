@@ -47,12 +47,13 @@ function love.load()
   
   game_paused = false --Mise en pause du jeu
   
-  score = 0
+  score = 0  
 
 --fin de love.load
 end
 
 function love.update(dt)
+  
   -- Fonction pour mettre à jour (appelée à chaque frame)
   
   if game_paused == false then --si le jeu n'est pas en pause
@@ -70,7 +71,7 @@ function love.update(dt)
   end
   
   if ball:collisionBallWithBrickTab(tab, soundBrick, soundBreakingBrick) then
-    score = tabscores(score, tab)
+    score = score + 1
   end
   
   

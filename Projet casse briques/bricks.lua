@@ -7,8 +7,10 @@ Brick = {
   height = 0, --Hauteur
   x = 0, --Position x
   y = 0, --Position y
-  resistance = 0, --Endommagement de la brick
-  color = ''
+  resistance = 0, --Resistance aux hits
+  memoryresist = 0, --Memoire de la resistance
+  color = '', --couleur de la brick
+  scorevalue = 1 --valeur de la brique en termes de score
 }
 
 -----------------------------------------------------------------------------------------
@@ -27,6 +29,7 @@ function Brick:new(o)
   self.resistance = 0 --compteur a 0 par defaut, il augmente selon le nbr de hits
   self.memoryresist = 0 --garde en memoire la resistance de base de la brique
   self.color = 0 --provisoire, je mettrais bientot un placeholder.
+  self.scorevalue = 1 --par defaut 1
   return o
 end
 
@@ -60,6 +63,9 @@ function Brick:getColorBrick()
   return self.color
 end
 
+function Brick:getScoreValue()
+  return self.scorevalue
+end
 
 -----------------------------------------------------------------------------------------
 --SETTERS
@@ -104,6 +110,10 @@ function Brick:setColorBrick(color)
   self.color = color
 end
 
+function Brick:setScoreValue(value)
+  self.scorevalue = value
+end
+
 -----------------------------------------------------------------------------------------
 --FONCTIONS QUI CREENT LES MOTIFS DE BRIQUES
     --0 = sans brique
@@ -140,6 +150,12 @@ function createPattern(template) --@param template le tableau, return template
           brick:setY( math.abs( math.ceil( i * ( 1 + brick:getWidth() ) ) ) ) 
           
           brick:setColorBrick(template[i][j]) --defini la couleur des briques 
+          
+          resistance = math.random(0, 3) --defini une resistance au pif entre 0 et 3
+          
+          brick:setResistance(resistance) --defini la resistance de la brick
+          
+          brick:setScoreValue( (resistance + 1) * 10) --defini la valeur en score de la brick
           
           --Place la brick dans le tableau a la place de la valeur 1
           template[i][j] = brick

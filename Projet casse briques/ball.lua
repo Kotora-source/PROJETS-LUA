@@ -157,21 +157,23 @@ function Ball:collisionBallWithBrickTab(Tab, sourcesound1, sourcesound2)
 end
 
 --Cree la collision entre la brick et la ball
+
+--revoir pcq la balle rentre dans les briques ça ma clc.
 function Ball:collisionBallWithBrick(brick)
   -- Collision par la gauche (coin haut inclus)
-    if self.x < brick.x + 3/8 * brick.width and self.speedX >= 0 then 
+    if self.x < (brick.x + 3/8 * brick.width + self.width) and self.speedX >= 0 then 
       self.speedX = -self.speedX
     end
     -- Collision par la droite (coin haut inclus)
-    if self.x > brick.x + 5/8 * brick.width and self.speedX <= 0 then
+    if self.x > (brick.x + 5/8 * brick.width - self.width) and self.speedX <= 0 then
         self.speedX = -self.speedX
     end
     -- Collision par le haut
-    if self.y < brick.y and self.speedY > 0 then
+    if self.y < (brick.y - self.height) and self.speedY > 0 then
       self.speedY = -self.speedY
     end
     -- Collision par le bas
-    if self.y > brick.y and self.speedY < 0 then
+    if self.y > (brick.y + self.height) and self.speedY < 0 then
       self.speedY = -self.speedY
     end
     return true
