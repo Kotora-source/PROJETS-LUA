@@ -37,7 +37,7 @@ function love.load()
   
   r = Racket:new(nil)
   
-  tab = createBrickPattern(1)--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
+  tab = createBrickPattern(4)--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
   
   initializeLives()
   
