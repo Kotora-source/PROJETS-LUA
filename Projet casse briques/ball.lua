@@ -84,7 +84,7 @@ function Ball:MovmentBall(dt, racket)
   --collisions avec les bordures
   if self.x + self.width >= ( love.graphics.getPixelWidth() * (7/10) ) then  -- Bordure droite
     self.speedX = -self.speedX
-  elseif self.x - self.width <= ( love.graphics.getPixelWidth() * (3/10) ) then -- Bordure gauche
+  elseif self.x <= ( love.graphics.getPixelWidth() * (3/10) ) then -- Bordure gauche
     self.speedX = -self.speedX
   end
   if self.y <= 0 then  -- Bordure haut
@@ -146,6 +146,7 @@ function Ball:collisionBallWithBrickTab(Tab, sourcesound1, sourcesound2)
           --si le brique casse
           if Tab[i][j]:getBroken() then 
             love.audio.play(sourcesound2) --joue le son d'une brique qui se brise
+            return true, Tab[i][j]
           end
           
         end
@@ -173,7 +174,7 @@ function Ball:collisionBallWithBrick(brick)
       self.speedY = -self.speedY
     end
     -- Collision par le bas
-    if self.y > (brick.y + self.height) and self.speedY < 0 then
+    if self.y + self.height > (brick.y + self.height) and self.speedY < 0 then
       self.speedY = -self.speedY
     end
     return true

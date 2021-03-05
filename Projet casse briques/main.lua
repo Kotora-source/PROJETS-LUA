@@ -70,8 +70,11 @@ function love.update(dt)
     ball:collisionBallWithRacket(r, soundRacket) -- Collision entre la balle et la raquette
   end
   
-  if ball:collisionBallWithBrickTab(tab, soundBrick, soundBreakingBrick) then
-    score = score + 1
+  
+  broken, brickbroke = ball:collisionBallWithBrickTab(tab, soundBrick, soundBreakingBrick)
+  
+  if broken == true then
+    score = score + brickbroke:getScoreValue()
   end
   
   
