@@ -9,9 +9,13 @@ function love.load()
   love.window.setFullscreen(true, "desktop")
 
   --load un pikachu
-  --pikachu = love.graphics.newImage("pikachu.png")
+  pikachu = love.graphics.newImage("pikachu.png")
   
-  --load un diagramme de venn
+  
+  height = pikachu:getHeight()
+  width = pikachu:getWidth()
+  
+  --[[load un diagramme de venn
   baseX = 300
 	baseY = 400
 	radius = 100
@@ -29,14 +33,14 @@ function love.load()
       {0, 0, 7, 7, 8, 7, 7, 0, 0},
       {0, 0, 0, 7, 7, 7, 0, 0, 0},
       {0, 0, 0, 0, 7, 0, 0, 0, 0}
-    }
+    } --]]
   
 end
 
 
 
 function love.draw()
-  --affiche un diagramme de venn
+  --[[affiche un diagramme de venn
   love.graphics.setColor(0.1, 0.3, 0.6)--test de la couleur
 	love.graphics.circle('fill', baseX, baseY, radius)
 	love.graphics.setColor(0, 1, 0, 0.4)
@@ -48,24 +52,13 @@ function love.draw()
   love.graphics.print(#template, 600, 600)
   love.graphics.print(#template[1], 600, 700)
   love.graphics.print((#template[1] * #template), 600, 800) --340
-
-  --[[
-  --affiche un pikachu
-  love.graphics.draw(pikachu)
-
-
-  --récupère les infos de la taille de l'écran et les affiche.
-  local _, _, flags = love.window.getMode()
-
-  -- The window's flags contain the index of the monitor it's currently in.
-  local width, height = love.window.getDesktopDimensions(flags.display)
-
-  love.graphics.print(("display %d: %d x %d"):format(flags.display, width, height), 4, 10)
-
-  --affiche les fps
-  scale = love.window.getDPIScale( )
-  love.graphics.print(scale, 4, 30)
   --]]
+  --
+  --affiche un pikachu
+  love.graphics.draw(pikachu, 500, 500, 6, 0.09)
+
+  love.graphics.print(width, 50, 50)
+  love.graphics.print(height, 150, 50)
  end
 
 --ferme la fenêtre et quitte proprement le programme quand la touche echap est pressee.

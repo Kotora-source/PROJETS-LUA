@@ -37,7 +37,7 @@ function love.load()
   
   r = Racket:new(nil)
   
-  tab = createBrickPattern(4)--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
+  tab = createBrickPattern(1)--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
   
   initializeLives()
   
@@ -83,14 +83,9 @@ function love.update(dt)
 end
 
 function love.draw()
-  -- Fonction pour dessiner (appelée à chaque frame)
-  love.graphics.setBackgroundColor(0.8, 0.8, 0.6)
+  --dessine le menu
+  drawmenu(score)
   
-  --dessine les bords sur les cotés
-  love.graphics.setColor(0.7, 0.5, 0.8)
-  love.graphics.rectangle('fill', 0, 0, (love.graphics.getPixelWidth() * (3/10) ), love.graphics.getPixelHeight())
-  love.graphics.rectangle('fill', ( love.graphics.getPixelWidth() * (7/10) ), 0, ( love.graphics.getPixelWidth() - ( love.graphics.getPixelWidth() * (7/10) ) ), love.graphics.getPixelHeight())
-  love.graphics.setColor(1, 1, 1)
   --dessine la raquette
   r:Affichage()
   
@@ -102,9 +97,6 @@ function love.draw()
   
   --affichage de la balle
   ball:drawBall()
-  
-  --affichage des scores
-  drawscore(score)
 
 --fin de love.draw
 end

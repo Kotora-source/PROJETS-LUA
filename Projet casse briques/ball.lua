@@ -87,7 +87,7 @@ function Ball:MovmentBall(dt, racket)
   elseif self.x <= ( love.graphics.getPixelWidth() * (3/10) ) then -- Bordure gauche
     self.speedX = -self.speedX
   end
-  if self.y <= 0 then  -- Bordure haut
+  if self.y <= (love.graphics.getPixelHeight() * (1/10)) then  -- Bordure haut
     self.speedY = -self.speedY
   elseif self.y + self.height >= love.graphics.getPixelHeight( ) then -- Bordure bas
     lives.count = lives.count - 1 

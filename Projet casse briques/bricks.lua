@@ -138,7 +138,7 @@ function createPattern(template) --@param template le tableau, return template
           
           --Definition des attributs de Brick
           -- defini la hauteur et la largeur (s'adapte a la largeur de chaque motif, occupe 3.5/10 de l'ecran)
-          l = math.ceil( (love.graphics.getPixelWidth() * (3.5/10)) / #template[1] )
+          l = math.ceil( (love.graphics.getPixelWidth() * (3.5/10)) / #template[1])
           brick:setHeight( l ) 
           brick:setWidth( l )
           
@@ -147,7 +147,7 @@ function createPattern(template) --@param template le tableau, return template
           
           --defini l'abscisse (sur 1/3 de l'ecran) et l'ordonnee (en fonction du nbr de bricks), arrondis au superieur en valeur absolue
           brick:setX( math.abs( math.ceil( (love.graphics.getPixelWidth() * (3/10) ) + (j-1) * ( 1 + brick:getWidth() ) + centre ) ) ) 
-          brick:setY( math.abs( math.ceil( i * ( 1 + brick:getWidth() ) ) ) ) 
+          brick:setY( math.abs( math.ceil( (love.graphics.getPixelHeight() * (1/10) ) + i * ( 1 + brick:getWidth() ) ) ) ) 
           
           brick:setColorBrick(template[i][j]) --defini la couleur des briques 
           
