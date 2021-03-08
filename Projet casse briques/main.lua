@@ -35,6 +35,9 @@ function love.load()
   soundBrick = love.audio.newSource(PATH_SOUND_BRICK, "static")
   soundBreakingBrick = love.audio.newSource(PATH_SOUND_BREAKING_BRICK, "static")
   
+  titlefont = love.graphics.newFont(PATH_FONT, 1000)
+  titletext = love.graphics.newText(titlefont, TITLE)
+  
   r = Racket:new(nil)
   
   tab = createBrickPattern(1)--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
@@ -84,7 +87,7 @@ end
 
 function love.draw()
   --dessine le menu
-  drawmenu(score)
+  drawmenu(score, titletext)
   
   --dessine la raquette
   r:Affichage()

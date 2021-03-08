@@ -70,3 +70,14 @@ L'angle entre vecteur vitesse de la boule apres le choc et l'horizontale (encore
 
 try and catch en lua :
 https://www.lua.org/wshop06/Belmonte.pdf
+
+soit X le scale factor de width
+le nombre que l'on cherche donc
+
+soit Z la width de l'image (fixe)
+soit Y la width de la brick actuelle qui est calculée
+en fonction de la taille de l'écran
+
+Z * X = Y
+
+X = Y / Z

@@ -7,6 +7,10 @@ NB_LIVES = 3 -- Nombre de vies initiales
 PATH_LIFE = "img/life.png" 
 PATH_RACKET = "img/placeholderRACKET.png" 
 
+PATH_FONT = "fonts/Filxgirl.TTF"
+
+TITLE = "Fairy Brick Adventures"
+
 --constantes son
 PATH_SOUND_RACKET = "sounds/racket_sound.mp3"
 PATH_SOUND_BREAKING_BRICK = "sounds/breaking_brick.mp3"

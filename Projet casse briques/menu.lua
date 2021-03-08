@@ -2,7 +2,7 @@
 --idees : système de points, avec mémoire quand on ferme le jeu // High scores
 
 --Dessine le menu, les scores, etc
-function drawmenu(score)
+function drawmenu(score, titletext)
   love.graphics.setBackgroundColor(0.8, 0.8, 0.6)
   
   --dessine les bords sur les cotés
@@ -19,17 +19,20 @@ function drawmenu(score)
   love.graphics.setColor(0, 0, 0)
   
   drawscore(score)
-  drawtitle()
+  drawtitle(titletext)
 end
 
---fonction privée, dessine le score
+-- *** FONCTIONS PRIVEES *** appelées uniquement par la fonction drawmenu()
+--dessine le score
 function drawscore(score)
-  score = "SCORE : " .. tostring(score)  
+  score = "SCORE : " .. tostring(score)  --a changer, essayer de trouver soit une police sympa ? soit un png ?
   love.graphics.print(score, (love.graphics.getPixelWidth() * (7/10) + 10), (love.graphics.getPixelHeight() / 100), 0, 1)
 end
 
-function drawtitle()
-  title = "Fairy Brick Adventures"
-  love.graphics.print(title, (love.graphics.getPixelWidth() * (3/10) + 10), (love.graphics.getPixelHeight() / 100), 0, 1)
+--dessine le titre
+function drawtitle(titletext)  
+  love.graphics.setColor(0, 0.5, 0.6)
+  
+  love.graphics.draw(titletext, 500, 10, 0, 0.1)
 end
 
