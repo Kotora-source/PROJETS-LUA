@@ -38,6 +38,7 @@ function love.load()
   titlefont = love.graphics.newFont(PATH_FONT, 1000)
   titletext = love.graphics.newText(titlefont, TITLE)
   
+  
   r = Racket:new(nil)
   
   tab = createBrickPattern(1)--mettre ici la fonction qui initialize les briques, a voir plus tard avec les differents lvls
