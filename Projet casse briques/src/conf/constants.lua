@@ -1,15 +1,16 @@
 --constantes fenetre
-TITLE = "Casse-briques" -- Titre
+TITLE = "Fairy Brick Adventures"
 PATH_ICON = "src/img/icon.png" -- Chemin image icône
 
 --constantes vies
 NB_LIVES = 3 -- Nombre de vies initiales
 PATH_LIFE = "src/img/life.png" 
+
+--constantes racket
 PATH_RACKET = "src/img/placeholderRACKET.png" 
 
+--constantes font
 PATH_FONT = "src/fonts/Filxgirl.TTF"
-
-TITLE = "Fairy Brick Adventures"
 
 --constantes son
 PATH_SOUND_RACKET = "src/sounds/racket_sound.mp3"

@@ -1,3 +1,6 @@
+--[[
+*** Permet d'appeler tous les fichiers nécessaires à l'éxecution en une seule ligne ***
+--]]
 return {
   --conf
   require ("src/conf/constants"),
@@ -7,6 +10,7 @@ return {
   require('src/controller/collisions'),
   require('src/controller/ballcontroller'),
   require('src/controller/brickscontroller'),
+  require('src/controller/racketcontroller'),
   
   --models
   require('src/models/ball'),
@@ -18,5 +22,6 @@ return {
   --view
   require('src/view/menu'),
   require('src/view/ballview'),
-  require('src/view/bricksview')
+  require('src/view/bricksview'),
+  require('src/view/racketview')
 }

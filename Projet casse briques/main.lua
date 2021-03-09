@@ -1,18 +1,8 @@
---tuto suivi sur le site suivant
---https://zestedesavoir.com/tutoriels/1399/un-jeu-de-casse-briques-en-lua-avec-love2d/ VOUS PUEZ LA MERDE LES MECS
---tentative d'amélioration et de création de fichiers objets A TESTER
-
 --appel des fichiers 
-require('src/conf/initializer')
+require('src/conf/init')
 
 -- pour écrire dans la console au fur et à mesure, facilitant ainsi le débogage
 io.stdout:setvbuf('no') 
-
---[[
-  NOTE :
-    On migrera tout le code qui est là dans "maingame.lua" : ça sera plus propre et plus clair.
---]]
-
 
 function love.load()
   -- Fonction pour initialiser le jeu (appelée au début de celui-ci)
