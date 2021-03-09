@@ -3,13 +3,7 @@
 --tentative d'amélioration et de création de fichiers objets A TESTER
 
 --appel des fichiers 
-require ('src/constants')
-require ('src/racket')
-require ('src/bricks')
-require ('src/lives')
-require ('src/ball')
-require('src/collisions')
-require('src/menu')
+require('src/conf/initializer')
 
 -- pour écrire dans la console au fur et à mesure, facilitant ainsi le débogage
 io.stdout:setvbuf('no') 

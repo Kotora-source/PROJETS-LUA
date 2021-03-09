@@ -1,4 +1,5 @@
-require ('constants')
+require ('src/conf/constants')
+
 function love.conf(t)
 
   t.window.title = TITLE -- Change le titre de la fenêtre
