@@ -1,6 +1,4 @@
-﻿--Classe de la racket -> classe objet
-
---Definition des attributs d'une racket
+﻿--Definition des attributs d'une racket
 Racket = {
     img = {}, --Image de la racket
     speedX = 0, --Vitesse horizontale sur l'axe X de la raquette
@@ -56,30 +54,4 @@ end
 
 function Racket:getHeight()
   return self.height
-end
-
------------------------------------------------------------------------------------------
---METHODES
---mouvement de la racket
-function Racket:Movment(dt)
-   -- Mouvement vers la gauche
-  if love.keyboard.isDown('left', 'q') and self.x > ( love.graphics.getPixelWidth() * (3/10) ) then
-      self.x = self.x - (self.speedX*dt)
-  -- Mouvement vers la droite
-  elseif love.keyboard.isDown('right', 'd') and self.x + self.width < ( love.graphics.getPixelWidth() * (7/10) ) then
-      self.x = self.x + (self.speedX*dt)
-  end
-end
-
---affichage de la racket
-function Racket:Affichage()
-  love.graphics.setColor(1, 1, 1)
-  
-  love.graphics.draw(self.img, self.x, self.y, 0, self.scalewidth, self.scaleheight)
-end
-
---reset la racket
-function Racket:resetRacket()
-  self.x = (love.graphics.getPixelWidth() - self.width) / 2 -- Position en abscisse
-  self.y = love.graphics.getPixelHeight() - 64 -- Position en ordonnée
 end

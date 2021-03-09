@@ -5,6 +5,8 @@ return {
   
   --controllers
   require('src/controller/collisions'),
+  require('src/controller/ballcontroller'),
+  require('src/controller/brickscontroller'),
   
   --models
   require('src/models/ball'),
@@ -14,5 +16,7 @@ return {
   require('src/models/racket'),
   
   --view
-  require('src/view/menu')
+  require('src/view/menu'),
+  require('src/view/ballview'),
+  require('src/view/bricksview')
 }
