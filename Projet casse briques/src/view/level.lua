@@ -2,7 +2,7 @@
 --idees : système de points, avec mémoire quand on ferme le jeu // High scores
 
 --Dessine le menu, les scores, etc
-function drawmenu(score, titletext)
+function drawlevel(score, titletext)
   love.graphics.setBackgroundColor(0.8, 0.8, 0.6)
   
   --dessine les bords sur les cotés

@@ -23,6 +23,20 @@ Dinosaure
 Crocodile
 Basse électrique
 
+Quand la brique se brise, une animation de coeur apparaît (en transparence)
+
+La balle de base a un motif de coeur.
+Les balles déblocables s'achètent avec des coins ou se trouvent dans les niveaux. Si elle sort de l'écran, elle est perdue.
+Le joueur a de base 3 balles de base et autant de balles achetables/trouvables qu'il veut.
+Les bonus apparaissent de manière aléatoires et non contrôlées par moi dans le tableau de briques. Mais la chance
+que ces bonus apparaissent est contrôlée selon leur nature et celle du tableau (selon le niveau)
+
+Il y a un scénario :
+"Un vil mage sévit dans le monde magique de fairy brick, notre héros doit les sauver !
+elles ont été changées en monstres qui attaquent les villes de ce monde. a l'aide de sa balle,
+le joueur doit toutes les détruire pour pouvoir ensuite affronter le méchant"
+Scénario à améliorer évidemment parce que si je fais ça propre j'en ai pour 3 ans de dev sans compter les musiques et les graphismes.
+
 Skins de balle
 Skins de raquette
 

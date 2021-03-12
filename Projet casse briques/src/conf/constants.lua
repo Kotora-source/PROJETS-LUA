@@ -1,5 +1,5 @@
 --constantes fenetre
-TITLE = "Fairy Brick Adventures"
+TITLE = 'Fairy Brick Adventures'
 PATH_ICON = "src/img/icon.png" -- Chemin image icône
 
 --constantes vies
@@ -8,6 +8,9 @@ PATH_LIFE = "src/img/life.png"
 
 --constantes racket
 PATH_RACKET = "src/img/placeholderRACKET.png" 
+
+--constantes ball
+PATH_BALL = "src/img/ballplaceholder.png"
 
 --constantes font
 PATH_FONT = "src/fonts/Filxgirl.TTF"

@@ -1,12 +1,16 @@
 --Attributs de Ball
 Ball = {
   name = '', --va servir pour les skins
+  skin = {},
   width = 0,
   heigth = 0,
   x = 0,
   y = 0,
   speedX = 0,
-  speedY = 0
+  speedY = 0,
+  scalewidth = 0,
+  scaleheight = 0,
+  stats = "aucune stat particulière, c'est la balle de base"
 }
 
 -----------------------------------------------------------------------------------------
@@ -17,13 +21,14 @@ function Ball:new(o)
   setmetatable(o, self) --lie les deux tables
   self.__index = self
   --Initialisation des attributs de Ball
-  name = 'default'
-  width = 0
-  height = 0
-  x = 0
-  y = 0
-  speedX = 0
-  speedY = 0
+  self.name = 'default'
+  self.skin = love.graphics.newImage(PATH_BALL) --Image de la racket
+  self.width = 0
+  self.height = 0
+  self.x = 0
+  self.y = 0
+  self.speedX = 0
+  self.speedY = 0
   return o
 end
 

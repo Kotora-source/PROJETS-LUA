@@ -3,6 +3,10 @@ require('src/models/ball')
 --Set la vitesse et la position de la balle par rapport a la racket
 function Ball:initializeBall(racketHeight, racketY)
   self.width, self.height = racketHeight * 0.5, racketHeight * 0.5  -- Taille
+  
+  self.scalewidth = self.width / self.skin:getWidth() --scale factor x
+  self.scaleheight = self.height / self.skin:getHeight() --scale factor y
+  
   self:resetBall(racketY)
 end
 

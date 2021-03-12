@@ -65,14 +65,13 @@ function love.update(dt)
     score = score + brickbroke:getScoreValue()
   end
   
-  
-  
+    
 --fin de love.update
 end
 
 function love.draw()
   --dessine le menu
-  drawmenu(score, titletext)
+  drawlevel(score, titletext)
   
   --dessine la raquette
   r:Affichage()

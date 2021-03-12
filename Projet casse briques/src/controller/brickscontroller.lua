@@ -13,7 +13,7 @@ require('src/models/bricks')
     --8 = brique blanche : color (1, 1, 1)
     --9 = brique noire : color (0, 0, 0)
 
---Fonction qui rempli le tableau // pas encore optimale
+--Fonction qui rempli le tableau 
 function createPattern(template) --@param template le tableau, return template
   --Parcourt le tableau de briques
   for i = 1, #template do
@@ -29,7 +29,7 @@ function createPattern(template) --@param template le tableau, return template
           brick:setWidth( l )
           
           --Trouve le centre
-          centre = (((love.graphics.getPixelWidth() * (4/10)) - (#template[i] * (1 + brick:getWidth()))) - 1) / 2 
+          local centre = (((love.graphics.getPixelWidth() * (4/10)) - (#template[i] * (1 + brick:getWidth()))) - 1) / 2 
           
           --defini l'abscisse (sur 1/3 de l'ecran) et l'ordonnee (en fonction du nbr de bricks), arrondis au superieur en valeur absolue
           brick:setX( math.abs( math.ceil( (love.graphics.getPixelWidth() * (3/10) ) + (j-1) * ( 1 + brick:getWidth() ) + centre ) ) ) 
@@ -137,3 +137,4 @@ function createBrickPattern(number)
   
   return createPattern(template)
 end
+
