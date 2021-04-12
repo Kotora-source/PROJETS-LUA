@@ -25,8 +25,15 @@ function createPattern(template) --@param template le tableau, return template
           --Definition des attributs de Brick
           -- defini la hauteur et la largeur (s'adapte a la largeur de chaque motif, occupe 3.5/10 de l'ecran)
           l = math.ceil( (love.graphics.getPixelWidth() * (3.5/10)) / #template[1])
-          brick:setHeight( l ) 
-          brick:setWidth( l )
+          h = math.ceil( (love.graphics.getPixelHeight() * (1/3)) / #template[1])
+          if l > h then
+            brick:setHeight( h ) 
+            brick:setWidth( h )
+          else
+            brick:setHeight( l ) 
+            brick:setWidth( l )
+        end
+        
           
           --Trouve le centre
           local centre = (((love.graphics.getPixelWidth() * (4/10)) - (#template[i] * (1 + brick:getWidth()))) - 1) / 2 
@@ -50,6 +57,25 @@ function createPattern(template) --@param template le tableau, return template
   end
   return template
 end
+
+--actualise la position du tableau en fonction de la taille de la fenêtre si elle est amenée à changer
+function actualizePattern(template)
+  for i = 1, #template do
+    for j = 1, #template[i] do
+      if template[i][j] ~= 0 then
+        
+        local centre = (((love.graphics.getPixelWidth() * (4/10)) - (#template[i] * (1 + template[i][j]:getWidth()))) - 1) / 2 
+        
+        --defini l'abscisse (sur 1/3 de l'ecran) et l'ordonnee (en fonction du nbr de bricks), arrondis au superieur en valeur absolue
+        template[i][j]:setX( math.abs( math.ceil( (love.graphics.getPixelWidth() * (3/10) ) + (j-1) * ( 1 + template[i][j]:getWidth() ) + centre ) ) ) 
+        template[i][j]:setY( math.abs( math.ceil( (love.graphics.getPixelHeight() * (1/10) ) + i * ( 1 + template[i][j]:getWidth() ) ) ) ) 
+        
+      end
+    end
+  end
+  
+end
+
 
 
 --Cree un motif de briques

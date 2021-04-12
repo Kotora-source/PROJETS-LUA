@@ -7,7 +7,7 @@ io.stdout:setvbuf('no')
 function love.load()
   -- Fonction pour initialiser le jeu (appelée au début de celui-ci)
   
-  love.window.setFullscreen(true, "desktop") -- Met en plein ecran
+  love.window.setFullscreen(false, "desktop") -- Met en plein ecran
   
   love.mouse.setVisible(false) --cache le curseur de la souris
   
@@ -65,16 +65,30 @@ function love.update(dt)
     score = score + brickbroke:getScoreValue()
   end
   
+  
+ 
+  
     
 --fin de love.update
 end
 
+function love.resize()
+ --actualisation des objets à l'écran
+  actualizePattern(tab)
+  
+  r:actualizeposition()
+  
+  ball:initializeBall(r:getHeight(), r:returnY())
+  
+  --fin de live.resize
+end
+  
 function love.draw()
   --dessine le menu
   drawlevel(score, titletext)
   
   --dessine la raquette
-  r:Affichage()
+  r:draw()
   
   --dessine les briques
   drawBricks(tab)

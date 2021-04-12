@@ -4,8 +4,8 @@ require('src/models/ball')
 function Ball:initializeBall(racketHeight, racketY)
   self.width, self.height = racketHeight * 0.5, racketHeight * 0.5  -- Taille
   
-  self.scalewidth = self.width / self.skin:getWidth() --scale factor x
-  self.scaleheight = self.height / self.skin:getHeight() --scale factor y
+  self.scalewidth = self.width / self.skin:getWidth() * 3 --scale factor x
+  self.scaleheight = self.height / self.skin:getHeight() * 3 --scale factor y
   
   self:resetBall(racketY)
 end
@@ -56,9 +56,10 @@ function Ball:collisionBallWithRacket(racket, sourcesound)
       end
     end
     -- Collision par le haut
-    if self.y - self.width < racket.y and self.speedY > 0 then
+    if self.y - (self.width*2) < racket.y and self.speedY > 0 then
       self.speedY = -self.speedY
   end
+
   
   love.audio.play(sourcesound)
 end

@@ -18,3 +18,9 @@ function Racket:resetRacket()
   self.x = (love.graphics.getPixelWidth() - self.width) / 2 -- Position en abscisse
   self.y = love.graphics.getPixelHeight() - 64 -- Position en ordonnée
 end
+
+function Racket:actualizeposition()
+  self.x = (love.graphics.getPixelWidth() - self.width) / 2 -- Position en abscisse
+  self.y = love.graphics.getPixelHeight( ) - 64 -- Position en ordonnée
+end
+
